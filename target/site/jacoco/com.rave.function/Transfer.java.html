@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Transfer.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RaveBackend</a> &gt; <a href="index.source.html" class="el_package">com.rave.function</a> &gt; <span class="el_source">Transfer.java</span></div><h1>Transfer.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.rave.function;
+
+import com.rave.config.ApiConnection;
+import com.rave.config.ApiQuery;
+import com.rave.config.Encryption;
+import com.rave.config.Endpoint;
+import com.rave.config.RaveConstant;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ *
+ * @author Tess
+ */
+<span class="fc" id="L20">public class Transfer {</span>
+
+    private String account_bank;
+    private String account_number;
+    private String recipient_id;
+    private String amount;
+    private String narration;
+    private String currency;
+    private String seckey;
+    private String reference;
+    private String content_type;
+
+    ApiConnection apiConnection;
+<span class="fc" id="L33">    Endpoint ed = new Endpoint();</span>
+<span class="fc" id="L34">    Encryption e = new Encryption();</span>
+
+    public JSONObject createTransferRecepient() {
+<span class="fc" id="L37">        this.apiConnection = new ApiConnection(ed.getTransferRecepient());</span>
+<span class="fc" id="L38">        ApiQuery api = new ApiQuery();</span>
+
+<span class="fc" id="L40">        api.putParams(&quot;account_number&quot;, this.getAccount_number());</span>
+
+<span class="fc" id="L42">        api.putParams(&quot;account_bank&quot;, this.getAccount_bank());</span>
+
+<span class="fc" id="L44">        api.putParams(&quot;seckey&quot;, RaveConstant.SECRET_KEY);</span>
+        
+
+<span class="fc" id="L47">        return this.apiConnection.connectAndQuery(api);</span>
+
+    }
+
+    public JSONObject listTransferRecepient() {
+<span class="fc" id="L52">        this.apiConnection = new ApiConnection(ed.getListTransferRecepient());</span>
+<span class="fc" id="L53">          String url =&quot;https://ravesandboxapi.flutterwave.com/v2/gpx/transfers/beneficiaries?seckey=&quot;+RaveConstant.SECRET_KEY;</span>
+<span class="fc" id="L54">        System.out.println(url);</span>
+
+       
+<span class="fc" id="L57">        return this.apiConnection.connectAndQueryWithGet(url);</span>
+        
+
+    }
+
+    public JSONObject initiateTransfer() {
+<span class="fc" id="L63">        this.apiConnection = new ApiConnection(ed.getTransferEndPoint());</span>
+<span class="fc" id="L64">        ApiQuery api = new ApiQuery();</span>
+
+       
+<span class="fc" id="L67">        api.putParams(&quot;account_number&quot;, this.getAccount_number());//expected result'</span>
+<span class="fc" id="L68">        api.putParams(&quot;account_bank&quot;, this.getAccount_bank());</span>
+<span class="fc" id="L69">        api.putParams(&quot;currency&quot;, this.getCurrency());</span>
+<span class="fc" id="L70">        api.putParams(&quot;recepient_id&quot;, this.getRecipient_id());</span>
+<span class="fc" id="L71">        api.putParams(&quot;amount&quot;, this.getAmount());</span>
+<span class="fc" id="L72">        api.putParams(&quot;narration&quot;, this.getNarration());</span>
+<span class="fc" id="L73">        api.putParams(&quot;seckey&quot;, RaveConstant.SECRET_KEY);</span>
+<span class="fc" id="L74">        api.putParams(&quot;reference&quot;, this.getReference());</span>
+<span class="fc" id="L75">        api.putParams(&quot;content_type&quot;, &quot;application/json&quot;);</span>
+<span class="fc" id="L76">        return this.apiConnection.connectAndQuery(api);</span>
+    }
+
+  
+    /**
+     * @return the account_bank
+     */
+    public String getAccount_bank() {
+<span class="fc" id="L84">        return account_bank;</span>
+    }
+
+    /**
+     * @param account_bank the account_bank to set
+     */
+    public void setAccount_bank(String account_bank) {
+<span class="fc" id="L91">        this.account_bank = account_bank;</span>
+<span class="fc" id="L92">    }</span>
+
+    /**
+     * @return the account_number
+     */
+    public String getAccount_number() {
+<span class="fc" id="L98">        return account_number;</span>
+    }
+
+    /**
+     * @param account_number the account_number to set
+     */
+    public void setAccount_number(String account_number) {
+<span class="fc" id="L105">        this.account_number = account_number;</span>
+<span class="fc" id="L106">    }</span>
+
+    /**
+     * @return the recipient_id
+     */
+    public String getRecipient_id() {
+<span class="fc" id="L112">        return recipient_id;</span>
+    }
+
+    /**
+     * @param recipient_id the recipient_id to set
+     */
+    public void setRecipient_id(String recipient_id) {
+<span class="nc" id="L119">        this.recipient_id = recipient_id;</span>
+<span class="nc" id="L120">    }</span>
+
+    /**
+     * @return the amount
+     */
+    public String getAmount() {
+<span class="fc" id="L126">        return amount;</span>
+    }
+
+    /**
+     * @param amount the amount to set
+     */
+    public void setAmount(String amount) {
+<span class="fc" id="L133">        this.amount = amount;</span>
+<span class="fc" id="L134">    }</span>
+
+    /**
+     * @return the narration
+     */
+    public String getNarration() {
+<span class="fc" id="L140">        return narration;</span>
+    }
+
+    /**
+     * @param narration the narration to set
+     */
+    public void setNarration(String narration) {
+<span class="fc" id="L147">        this.narration = narration;</span>
+<span class="fc" id="L148">    }</span>
+
+    /**
+     * @return the currency
+     */
+    public String getCurrency() {
+<span class="fc" id="L154">        return currency;</span>
+    }
+
+    /**
+     * @param currency the currency to set
+     */
+    public void setCurrency(String currency) {
+<span class="fc" id="L161">        this.currency = currency;</span>
+<span class="fc" id="L162">    }</span>
+
+    /**
+     * @return the seckey
+     */
+    public String getSeckey() {
+<span class="nc" id="L168">        return seckey;</span>
+    }
+
+    /**
+     * @param seckey the seckey to set
+     */
+    public void setSeckey(String seckey) {
+<span class="nc" id="L175">        this.seckey = seckey;</span>
+<span class="nc" id="L176">    }</span>
+
+    /**
+     * @return the reference
+     */
+    public String getReference() {
+<span class="fc" id="L182">        return reference;</span>
+    }
+
+    /**
+     * @param reference the reference to set
+     */
+    public void setReference(String reference) {
+<span class="fc" id="L189">        this.reference = reference;</span>
+<span class="fc" id="L190">    }</span>
+
+    /**
+     * @return the content_type
+     */
+    public String getContent_type() {
+<span class="nc" id="L196">        return content_type;</span>
+    }
+
+    /**
+     * @param content_type the content_type to set
+     */
+    public void setContent_type(String content_type) {
+<span class="nc" id="L203">        this.content_type = content_type;</span>
+<span class="nc" id="L204">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

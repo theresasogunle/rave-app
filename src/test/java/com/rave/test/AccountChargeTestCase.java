@@ -41,32 +41,33 @@ public class AccountChargeTestCase {
                 .setEmail("sogunledolapo@gmail.com");
 
         JSONObject result = ch.chargeAccount();
-
-      
-        JSONObject data = (JSONObject) result.get("data");
-        if (data.get("chargeResponseCode").equals("02")) {
-            ch.setOtp("12345");
-            ch.setTransaction_reference("ACHG-1532954128209");
-            JSONObject validate = ch.validateAccountCharge();
-
-            if (validate.get("status").equals("success")) {
-                assertEquals(validate.get("status"), "success");
-
-            } else {
-                assertEquals(validate.get("status"), "error");
-            }
-
-        }
-        else if(data.get("chargeResponseCode").equals("00")){
-        
-          if (result.get("status").equals("success")) {
+        if (result.get("status").equals("success")) {
             assertEquals(result.get("status"), "success");
             System.out.println(result);
-        } else {
+            JSONObject data = (JSONObject) result.get("data");
+            if (data.get("chargeResponseCode").equals("02")) {
+                ch.setOtp("12345");
+                ch.setTransaction_reference("ACHG-1532954128209");
+                JSONObject validate = ch.validateAccountCharge();
 
-            assertEquals(result.get("status"), "error");
-            System.out.println(result);
-        }
+                if (validate.get("status").equals("success")) {
+                    assertEquals(validate.get("status"), "success");
+
+                } else {
+                    assertEquals(validate.get("status"), "error");
+                }
+            } else if (data.get("chargeResponseCode").equals("00")) {
+
+                if (result.get("status").equals("success")) {
+                    assertEquals(result.get("status"), "success");
+                    System.out.println(result);
+                } else {
+
+                    assertEquals(result.get("status"), "error");
+                    System.out.println(result);
+                }
+            }
+
         }
 
     }

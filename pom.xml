@@ -40,12 +40,12 @@
             <artifactId>coveralls-maven-plugin</artifactId>
             <version>4.3.0</version>
             <configuration>
-                <repoToken>dakvAtKl39YvqHlqpvkHQb26M7CZMEsNg</repoToken>
+                <repoToken>RvAs7BkRmOfTBXGqIzGfxqHTsN4jvvPDn</repoToken>
             </configuration>
         </plugin>
           
     </plugins>
-    </biuild>
+    </build>
     <dependencies>
    
         <dependency>

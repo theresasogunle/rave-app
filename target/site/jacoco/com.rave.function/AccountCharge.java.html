@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AccountCharge.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RaveBackend</a> &gt; <a href="index.source.html" class="el_package">com.rave.function</a> &gt; <span class="el_source">AccountCharge.java</span></div><h1>AccountCharge.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.rave.function;
+
+import com.rave.config.Encryption;
+import static com.rave.config.Encryption.encryptData;
+import com.rave.config.RaveConstant;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ *
+ * @author Tess
+ */
+<span class="fc" id="L18">public class AccountCharge {</span>
+<span class="fc" id="L19">      Encryption e=new Encryption();</span>
+    
+    private String accountnumber,accountbank,currency,country,
+               amount,email,phonenumber,firstname,lastname,
+               txRef,passcode,device_fingerprint,redirect_url;
+    
+    private String transaction_reference;//to be called
+    private String otp;//to be called
+ 
+    public JSONObject setJSON() {
+<span class="fc" id="L29">        JSONObject json=new JSONObject();</span>
+        try{
+<span class="fc" id="L31">        json.put(&quot;PBFPubKey&quot;,RaveConstant.PUBLIC_KEY);</span>
+<span class="fc" id="L32">        json.put(&quot;accountnumber&quot;,this.getAccountnumber());//expected result'</span>
+<span class="fc" id="L33">        json.put(&quot;accountbank&quot;,this.getAccountbank());</span>
+<span class="fc" id="L34">        json.put(&quot;currency&quot;, this.getCurrency());</span>
+<span class="fc" id="L35">        json.put(&quot;country&quot;, this.getCountry());</span>
+<span class="fc" id="L36">        json.put(&quot;amount&quot;, this.getAmount());</span>
+<span class="fc" id="L37">        json.put(&quot;firstname&quot;, this.getFirstname());</span>
+<span class="fc" id="L38">        json.put(&quot;lastname&quot;, this.getLastname());</span>
+<span class="fc" id="L39">        json.put(&quot;passcode&quot;, this.getPasscode());</span>
+<span class="fc" id="L40">        json.put(&quot;email&quot;, this.getEmail());</span>
+<span class="fc" id="L41">        json.put(&quot;payment_type&quot;, &quot;account&quot;);</span>
+<span class="fc" id="L42">        json.put(&quot;txRef&quot;, this.getTxRef());</span>
+<span class="fc" id="L43">        json.put(&quot;redirect_url&quot;, this.getRedirect_url());</span>
+<span class="fc" id="L44">        json.put(&quot;device_fingerprint&quot;, this.getDevice_fingerprint());</span>
+
+<span class="pc" id="L46">        }catch( JSONException ex){ex.getMessage();}</span>
+<span class="fc" id="L47">        return json;</span>
+   }
+    /**
+    *
+
+    * @return json
+    */ 
+    
+    public JSONObject chargeAccount() {
+       
+<span class="fc" id="L57">        JSONObject json=setJSON();</span>
+        
+        
+<span class="fc" id="L60">        String message= json.toString();</span>
+        
+<span class="fc" id="L62">        String encrypt_secret_key=Encryption.getKey(RaveConstant.SECRET_KEY);</span>
+<span class="fc" id="L63">        String client= encryptData(message,encrypt_secret_key);</span>
+
+<span class="fc" id="L65">        Charge ch=new Charge();</span>
+        
+<span class="fc" id="L67">        return ch.charge(client);</span>
+
+    }
+   
+
+     public JSONObject validateAccountCharge(){
+<span class="nc" id="L73">      Charge vcharge= new Charge();</span>
+<span class="nc" id="L74">     return vcharge.validateAccountCharge(this.getTransaction_reference(), this.getOtp());</span>
+    }
+
+   
+
+    /**
+     * @return the accountnumber
+     */
+    public String getAccountnumber() {
+<span class="fc" id="L83">        return accountnumber;</span>
+    }
+
+    /**
+     * @param accountnumber the accountnumber to set
+     * @return AccountCharge
+     */
+    public AccountCharge setAccountnumber(String accountnumber) {
+<span class="fc" id="L91">        this.accountnumber = accountnumber;</span>
+<span class="fc" id="L92">        return this;</span>
+    }
+
+    /**
+     * @return the accountbank
+     */
+    public String getAccountbank() {
+<span class="fc" id="L99">        return accountbank;</span>
+    }
+
+    /**
+     * @param accountbank the accountbank to set
+     * @return AccountCharge
+     */
+    public AccountCharge setAccountbank(String accountbank) {
+<span class="fc" id="L107">        this.accountbank = accountbank;</span>
+<span class="fc" id="L108">         return this;</span>
+    }
+
+    /**
+     * @return the currency
+     */
+    public String getCurrency() {
+<span class="fc" id="L115">        return currency;</span>
+    }
+
+    /**
+     * @param currency the currency to set
+     * @return AccountCharge
+     */
+    public AccountCharge setCurrency(String currency) {
+<span class="fc" id="L123">        this.currency = currency;</span>
+<span class="fc" id="L124">         return this;</span>
+    }
+
+    /**
+     * @return the country
+     */
+    public String getCountry() {
+<span class="fc" id="L131">        return country;</span>
+    }
+
+    /**
+     * @param country the country to set
+     * @return AccountCharge
+     */
+    public AccountCharge setCountry(String country) {
+<span class="fc" id="L139">        this.country = country;</span>
+<span class="fc" id="L140">         return this;</span>
+    }
+
+    /**
+     * @return the amount
+     */
+    public String getAmount() {
+<span class="fc" id="L147">        return amount;</span>
+    }
+
+    /**
+     * @param amount the amount to set
+     * @return AccountCharge
+     */
+    public AccountCharge setAmount(String amount) {
+<span class="fc" id="L155">        this.amount = amount;</span>
+<span class="fc" id="L156">         return this;</span>
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+<span class="fc" id="L163">        return email;</span>
+    }
+
+    /**
+     * @param email the email to set
+     * @return AccountCharge
+     */
+    public AccountCharge setEmail(String email) {
+<span class="fc" id="L171">        this.email = email;</span>
+<span class="fc" id="L172">         return this;</span>
+    }
+
+    /**
+     * @return the phonenumber
+     */
+    public String getPhonenumber() {
+<span class="nc" id="L179">        return phonenumber;</span>
+    }
+
+    /**
+     * @param phonenumber the phonenumber to set
+     * @return AccountCharge
+     */
+    public AccountCharge setPhonenumber(String phonenumber) {
+<span class="nc" id="L187">        this.phonenumber = phonenumber;</span>
+<span class="nc" id="L188">         return this;</span>
+    }
+
+    /**
+     * @return the firstname
+     * 
+     */
+    public String getFirstname() {
+<span class="fc" id="L196">        return firstname;</span>
+    }
+
+    /**
+     * @param firstname the firstname to set
+     * @return AccountCharge
+     */
+    public AccountCharge setFirstname(String firstname) {
+<span class="nc" id="L204">        this.firstname = firstname;</span>
+<span class="nc" id="L205">         return this;</span>
+    }
+
+    /**
+     * @return the lastname
+     */
+    public String getLastname() {
+<span class="fc" id="L212">        return lastname;</span>
+    }
+
+    /**
+     * @param lastname the lastname to set
+     * @return AccountCharge
+     */
+    public AccountCharge setLastname(String lastname) {
+<span class="fc" id="L220">        this.lastname = lastname;</span>
+<span class="fc" id="L221">         return this;</span>
+    }
+
+  
+
+    /**
+     * @return the txRef
+     */
+    public String getTxRef() {
+<span class="fc" id="L230">        return txRef;</span>
+    }
+
+    /**
+     * @param txRef the txRef to set
+     * @return AccountCharge
+     */
+    public AccountCharge setTxRef(String txRef) {
+<span class="fc" id="L238">        this.txRef = txRef;</span>
+<span class="fc" id="L239">         return this;</span>
+    }
+
+    /**
+     * @return the passcode
+     */
+    public String getPasscode() {
+<span class="fc" id="L246">        return passcode;</span>
+    }
+
+    /**
+     * @param passcode the passcode to set
+     * @return AccountCharge
+     */
+    public AccountCharge setPasscode(String passcode) {
+<span class="nc" id="L254">        this.passcode = passcode;</span>
+<span class="nc" id="L255">         return this;</span>
+    }
+
+    /**
+     * @return the device_fingerprint
+     */
+    public String getDevice_fingerprint() {
+<span class="fc" id="L262">        return device_fingerprint;</span>
+    }
+
+    /**
+     * @param device_fingerprint the device_fingerprint to set
+     * @return AccountCharge
+     */
+    public AccountCharge setDevice_fingerprint(String device_fingerprint) {
+<span class="nc" id="L270">        this.device_fingerprint = device_fingerprint;</span>
+<span class="nc" id="L271">         return this;</span>
+    }
+
+    /**
+     * @return the transaction_reference
+     */
+    public String getTransaction_reference() {
+<span class="nc" id="L278">        return transaction_reference;</span>
+    }
+
+    /**
+     * @param transaction_reference the transaction_reference to set
+     * @return AccountCharge
+     */
+    public AccountCharge setTransaction_reference(String transaction_reference) {
+<span class="nc" id="L286">        this.transaction_reference = transaction_reference;</span>
+<span class="nc" id="L287">         return this;</span>
+    }
+
+    /**
+     * @return the otp
+     */
+    public String getOtp() {
+<span class="nc" id="L294">        return otp;</span>
+    }
+
+    /**
+     * @param otp the otp to set
+     * @return AccountCharge
+     */
+    public AccountCharge setOtp(String otp) {
+<span class="nc" id="L302">        this.otp = otp;</span>
+<span class="nc" id="L303">         return this;</span>
+    }
+
+    /**
+     * @return the redirect_url
+     */
+    public String getRedirect_url() {
+<span class="fc" id="L310">        return redirect_url;</span>
+    }
+
+    /**
+     * @param redirect_url the redirect_url to set
+     */
+    public void setRedirect_url(String redirect_url) {
+<span class="nc" id="L317">        this.redirect_url = redirect_url;</span>
+<span class="nc" id="L318">    }</span>
+    
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

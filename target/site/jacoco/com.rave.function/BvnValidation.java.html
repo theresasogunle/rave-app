@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BvnValidation.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RaveBackend</a> &gt; <a href="index.source.html" class="el_package">com.rave.function</a> &gt; <span class="el_source">BvnValidation.java</span></div><h1>BvnValidation.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.rave.function;
+
+import com.rave.config.ApiConnection;
+import com.rave.config.Encryption;
+import com.rave.config.Endpoint;
+import com.rave.config.RaveConstant;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import org.json.JSONObject;
+
+/**
+ *
+ * @author Tess
+ */
+<span class="fc" id="L22">public class BvnValidation {</span>
+
+    private String bvn_number;
+    ApiConnection apiConnection;
+<span class="fc" id="L26">    Endpoint ed = new Endpoint();</span>
+<span class="fc" id="L27">    Encryption e = new Encryption();</span>
+
+    public JSONObject validateBVN(String bvn) throws Exception {
+<span class="fc" id="L30">        this.apiConnection = new ApiConnection(ed.getBvnEndpoint());</span>
+<span class="fc" id="L31">        String seckey =&quot;FLWSECK-e6db11d1f8a6208de8cb2f94e293450e-X&quot;;</span>
+<span class="fc" id="L32">   String url =&quot;https://ravesandboxapi.flutterwave.com/v2/kyc/bvn/&quot;+bvn+&quot;?seckey=&quot;+seckey;</span>
+<span class="fc" id="L33">        System.out.println(url);</span>
+
+       
+<span class="fc" id="L36">        return this.apiConnection.connectAndQueryWithGet(url);</span>
+
+    }
+
+    public static URI appendUri(String uri, String appendQuery) throws URISyntaxException {
+<span class="nc" id="L41">        URI oldUri = new URI(uri);</span>
+
+<span class="nc" id="L43">        String newQuery = oldUri.getQuery();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (newQuery == null) {</span>
+<span class="nc" id="L45">            newQuery = appendQuery;</span>
+        } else {
+<span class="nc" id="L47">            newQuery += &quot;&amp;&quot; + appendQuery;</span>
+        }
+
+<span class="nc" id="L50">        URI newUri = new URI(oldUri.getScheme(), oldUri.getAuthority(),</span>
+<span class="nc" id="L51">                oldUri.getPath(), newQuery, oldUri.getFragment());</span>
+
+<span class="nc" id="L53">        return newUri;</span>
+    }
+
+    /**
+     * @return the bvn_number
+     */
+    public String getBvn_number() {
+<span class="nc" id="L60">        return bvn_number;</span>
+    }
+
+    /**
+     * @param bvn_number the bvn_number to set
+     */
+    public void setBvn_number(String bvn_number) {
+<span class="nc" id="L67">        this.bvn_number = bvn_number;</span>
+<span class="nc" id="L68">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
