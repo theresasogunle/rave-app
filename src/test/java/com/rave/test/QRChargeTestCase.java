@@ -33,10 +33,8 @@ public class QRChargeTestCase {
           ch.setCurrency("NG");
           ch.setEmail("sogunledolapo@gmail.com");
           ch.setFirstname("Theresa");
-          ch.setIs_qr("qr");
           ch.setMetaname("flightid");
           ch.setMetavalue("93849-MK5000");
-          ch.setPayment_type("pwc_qr");
           ch.setTxRef("m3s4m0c1526722407366");
                 
           

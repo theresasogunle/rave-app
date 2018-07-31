@@ -10,7 +10,6 @@ import com.rave.config.ApiQuery;
 import com.rave.config.Encryption;
 import com.rave.config.Endpoint;
 import com.rave.config.RaveConstant;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -27,7 +26,7 @@ public class Transfer {
     private String currency;
     private String seckey;
     private String reference;
-    private String content_type;
+  
 
     ApiConnection apiConnection;
     Endpoint ed = new Endpoint();
@@ -51,7 +50,6 @@ public class Transfer {
     public JSONObject listTransferRecepient() {
         this.apiConnection = new ApiConnection(ed.getListTransferRecepient());
           String url ="https://ravesandboxapi.flutterwave.com/v2/gpx/transfers/beneficiaries?seckey="+RaveConstant.SECRET_KEY;
-        System.out.println(url);
 
        
         return this.apiConnection.connectAndQueryWithGet(url);
@@ -72,7 +70,7 @@ public class Transfer {
         api.putParams("narration", this.getNarration());
         api.putParams("seckey", RaveConstant.SECRET_KEY);
         api.putParams("reference", this.getReference());
-        api.putParams("content_type", "application/json");
+       
         return this.apiConnection.connectAndQuery(api);
     }
 
@@ -189,17 +187,5 @@ public class Transfer {
         this.reference = reference;
     }
 
-    /**
-     * @return the content_type
-     */
-    public String getContent_type() {
-        return content_type;
-    }
-
-    /**
-     * @param content_type the content_type to set
-     */
-    public void setContent_type(String content_type) {
-        this.content_type = content_type;
-    }
+   
 }

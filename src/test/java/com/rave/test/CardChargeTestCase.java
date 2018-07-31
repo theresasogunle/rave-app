@@ -50,20 +50,18 @@ public class CardChargeTestCase {
         JSONObject charge = ch.chargeCard();
         System.out.println(charge);
         JSONObject data = charge.getJSONObject("data");
-        if (data.has("suggested_auth")) {
-            String string = data.get("suggested_auth").toString();
 
-            ch.setPin("3310");
-            ch.setBillingaddress("New York");
-            ch.setBillingcity("New Y");
-            ch.setBillingzip("11002");
-            ch.setBillingstate("Neww");
-            ch.setBillingcountry("NG");
+        String string = data.get("suggested_auth").toString();
+        ch.setPin("3310");
+        ch.setBillingaddress("New York");
+        ch.setBillingcity("New Y");
+        ch.setBillingzip("11002");
+        ch.setBillingstate("Neww");
+        ch.setBillingcountry("NG");
 
-            JSONObject charr = ch.recharge(string);
+        JSONObject charr = ch.recharge(string);
 
-            System.out.println(charr);
-        }
+        System.out.println(charr);
 
         if (charge.get("status").equals("success")) {
             assertEquals(charge.get("status"), "success");
@@ -111,6 +109,15 @@ public class CardChargeTestCase {
             System.out.println(validateCharge);
             System.out.println("Validation not successful!");
         }
+            
+       JSONObject verify = ch.verify("2556773");
+        
+         if(verify.get("status").equals("success")){
+         assertEquals(verify.get("status"),"success");
+      
+         }else{
+         assertEquals(verify.get("status"),"error");
+         }
 
     }
 

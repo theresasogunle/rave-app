@@ -24,6 +24,11 @@ public class RecurringPaymentTestCase {
         py.setName("Wunmi");
         py.setInterval("monthly");
         py.setDuration("3");
+        py.setBillingaddress("Lagos");
+        py.setBillingcountry("Nigeria");
+        py.setBillingstate("Nigerua");
+        py.setBillingzip("112002");
+        
 
         JSONObject response = py.createPaymentPlan();
         if (response.get("status").equals("success")) {
@@ -53,6 +58,7 @@ public class RecurringPaymentTestCase {
         py.setTxRef("MXX-ASC-4578");
         py.setRedirect_url("");
         py.setPayment_plan("13");
+        py.setPhonenumber("09027891737");
 
         JSONObject response = py.charge();
         if (response.get("status").equals("success")) {

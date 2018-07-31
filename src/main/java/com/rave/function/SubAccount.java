@@ -49,8 +49,6 @@ public class SubAccount {
         api.putParams("business_contact", this.getBusiness_contact());
         api.putParams("business_mobile", this.getBusiness_mobile());
         api.putParams("seckey", RaveConstant.SECRET_KEY);
-        api.putParams("split_value", this.getSplit_value());
-        api.putParams("split_type", this.getSplit_type());
         api.putParams("meta", getMeta());
         api.putParams("amount", this.getAmount());
         getMeta().put("metaname", this.getMetaname());
@@ -173,27 +171,8 @@ public class SubAccount {
         this.seckey = seckey;
     }
 
-    /**
-     * @return the split_type
-     */
-    public String getSplit_type() {
-        return split_type;
-    }
-
-    /**
-     * @param split_type the split_type to set
-     */
-    public void setSplit_type(String split_type) {
-        this.split_type = split_type;
-    }
-
-    /**
-     * @return the split_value
-     */
-    public String getSplit_value() {
-        return split_value;
-    }
-
+   
+    
     /**
      * @param split_value the split_value to set
      */
@@ -201,19 +180,7 @@ public class SubAccount {
         this.split_value = split_value;
     }
 
-    /**
-     * @return the content_type
-     */
-    public String getContent_type() {
-        return content_type;
-    }
-
-    /**
-     * @param content_type the content_type to set
-     */
-    public void setContent_type(String content_type) {
-        this.content_type = content_type;
-    }
+ 
 
     /**
      * @return the meta

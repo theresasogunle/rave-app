@@ -51,7 +51,6 @@ public class QRCharge {
             json.put("country", this.getCountry());
             json.put("amount", this.getAmount());
             json.put("email", this.getEmail());
-            json.put("IP", this.getIP());
             json.put("txRef", this.getTxRef());
             json.put("device_fingerprint", this.getDevice_fingerprint());
             json.put("firstname", this.getFirstname());
@@ -146,47 +145,6 @@ public class QRCharge {
         this.txRef = txRef;
     }
 
-    /**
-     * @return the is_qr
-     */
-    public String getIs_qr() {
-        return is_qr;
-    }
-
-    /**
-     * @param is_qr the is_qr to set
-     */
-    public void setIs_qr(String is_qr) {
-        this.is_qr = is_qr;
-    }
-
-    /**
-     * @return the payment_type
-     */
-    public String getPayment_type() {
-        return payment_type;
-    }
-
-    /**
-     * @param payment_type the payment_type to set
-     */
-    public void setPayment_type(String payment_type) {
-        this.payment_type = payment_type;
-    }
-
-    /**
-     * @return the IP
-     */
-    public String getIP() {
-        return IP;
-    }
-
-    /**
-     * @param IP the IP to set
-     */
-    public void setIP(String IP) {
-        this.IP = IP;
-    }
 
     /**
      * @return the device_fingerprint
@@ -259,9 +217,7 @@ public class QRCharge {
         this.lastname = lastname;
     }
 
-    /**
-     * @return the submerchant_business_name
-     */
+   
     public String getSubmerchant_business_name() {
         return submerchant_business_name;
     }
@@ -287,9 +243,7 @@ public class QRCharge {
         this.meta = meta;
     }
 
-    /**
-     * @return the metaname
-     */
+   
     public String getMetaname() {
         return metaname;
     }

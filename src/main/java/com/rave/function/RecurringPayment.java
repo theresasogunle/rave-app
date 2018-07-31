@@ -430,8 +430,9 @@ public class RecurringPayment {
     /**
      * @param phonenumber the phonenumber to set
      */
-    public void setPhonenumber(String phonenumber) {
+    public RecurringPayment setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+        return this;
     }
 
     /**
@@ -444,8 +445,9 @@ public class RecurringPayment {
     /**
      * @param firstname the firstname to set
      */
-    public void setFirstname(String firstname) {
+    public RecurringPayment setFirstname(String firstname) {
         this.firstname = firstname;
+        return this;
     }
 
     /**
@@ -458,8 +460,9 @@ public class RecurringPayment {
     /**
      * @param lastname the lastname to set
      */
-    public void setLastname(String lastname) {
+    public  RecurringPayment setLastname(String lastname) {
         this.lastname = lastname;
+        return this;
     }
 
     /**
@@ -472,8 +475,9 @@ public class RecurringPayment {
     /**
      * @param redirect_url the redirect_url to set
      */
-    public void setRedirect_url(String redirect_url) {
+    public RecurringPayment setRedirect_url(String redirect_url) {
         this.redirect_url = redirect_url;
+        return this;
     }
 
     /**
@@ -486,8 +490,9 @@ public class RecurringPayment {
     /**
      * @param device_fingerprint the device_fingerprint to set
      */
-    public void setDevice_fingerprint(String device_fingerprint) {
+    public RecurringPayment setDevice_fingerprint(String device_fingerprint) {
         this.device_fingerprint = device_fingerprint;
+        return this;
     }
 
     /**
@@ -513,9 +518,11 @@ public class RecurringPayment {
 
     /**
      * @param charge_type the charge_type to set
+     * @return RecurringPayment
      */
-    public void setCharge_type(String charge_type) {
+    public RecurringPayment setCharge_type(String charge_type) {
         this.charge_type = charge_type;
+        return this;
     }
 
 }
