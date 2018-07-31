@@ -57,16 +57,16 @@ import org.json.JSONObject;
 
     public JSONObject validateAccountCharge(String transaction_reference, String otp) {
 
-<span class="nc" id="L60">        this.apiConnection = new ApiConnection(ed.getValidateAccountChargeEndPoint());</span>
+<span class="fc" id="L60">        this.apiConnection = new ApiConnection(ed.getValidateAccountChargeEndPoint());</span>
 
-<span class="nc" id="L62">        ApiQuery api = new ApiQuery();</span>
+<span class="fc" id="L62">        ApiQuery api = new ApiQuery();</span>
 
-<span class="nc" id="L64">        api.putParams(&quot;PBFPubKey&quot;, RaveConstant.PUBLIC_KEY);</span>
-<span class="nc" id="L65">        api.putParams(&quot;transactionreference&quot;, transaction_reference);</span>
+<span class="fc" id="L64">        api.putParams(&quot;PBFPubKey&quot;, RaveConstant.PUBLIC_KEY);</span>
+<span class="fc" id="L65">        api.putParams(&quot;transactionreference&quot;, transaction_reference);</span>
 
-<span class="nc" id="L67">        api.putParams(&quot;otp&quot;, otp);</span>
+<span class="fc" id="L67">        api.putParams(&quot;otp&quot;, otp);</span>
 
-<span class="nc" id="L69">        return this.apiConnection.connectAndQuery(api);</span>
+<span class="fc" id="L69">        return this.apiConnection.connectAndQuery(api);</span>
     }
 
     /**

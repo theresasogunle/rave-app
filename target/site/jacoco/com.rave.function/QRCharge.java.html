@@ -51,268 +51,222 @@ import org.json.JSONObject;
 <span class="fc" id="L51">            json.put(&quot;country&quot;, this.getCountry());</span>
 <span class="fc" id="L52">            json.put(&quot;amount&quot;, this.getAmount());</span>
 <span class="fc" id="L53">            json.put(&quot;email&quot;, this.getEmail());</span>
-<span class="fc" id="L54">            json.put(&quot;IP&quot;, this.getIP());</span>
-<span class="fc" id="L55">            json.put(&quot;txRef&quot;, this.getTxRef());</span>
-<span class="fc" id="L56">            json.put(&quot;device_fingerprint&quot;, this.getDevice_fingerprint());</span>
-<span class="fc" id="L57">            json.put(&quot;firstname&quot;, this.getFirstname());</span>
-<span class="fc" id="L58">            json.put(&quot;lastname&quot;, this.getLastname());</span>
-<span class="fc" id="L59">            json.put(&quot;phonenumber&quot;, this.getPhonenumber());</span>
-<span class="fc" id="L60">            json.put(&quot;meta&quot;, this.getMeta());</span>
-<span class="fc" id="L61">            meta.put(&quot;metaname&quot;, this.getMetaname());</span>
-<span class="fc" id="L62">            meta.put(&quot;metavalue&quot;, this.getMetavalue());</span>
-<span class="fc" id="L63">            json.put(&quot;is_qr&quot;, &quot;qr&quot;);</span>
-<span class="fc" id="L64">            json.put(&quot;payment_type&quot;, &quot;pwc_qr&quot;);</span>
-<span class="fc" id="L65">            json.put(&quot;submerchant_business_name&quot;, this.getSubmerchant_business_name());   </span>
+<span class="fc" id="L54">            json.put(&quot;txRef&quot;, this.getTxRef());</span>
+<span class="fc" id="L55">            json.put(&quot;device_fingerprint&quot;, this.getDevice_fingerprint());</span>
+<span class="fc" id="L56">            json.put(&quot;firstname&quot;, this.getFirstname());</span>
+<span class="fc" id="L57">            json.put(&quot;lastname&quot;, this.getLastname());</span>
+<span class="fc" id="L58">            json.put(&quot;phonenumber&quot;, this.getPhonenumber());</span>
+<span class="fc" id="L59">            json.put(&quot;meta&quot;, this.getMeta());</span>
+<span class="fc" id="L60">            meta.put(&quot;metaname&quot;, this.getMetaname());</span>
+<span class="fc" id="L61">            meta.put(&quot;metavalue&quot;, this.getMetavalue());</span>
+<span class="fc" id="L62">            json.put(&quot;is_qr&quot;, &quot;qr&quot;);</span>
+<span class="fc" id="L63">            json.put(&quot;payment_type&quot;, &quot;pwc_qr&quot;);</span>
+<span class="fc" id="L64">            json.put(&quot;submerchant_business_name&quot;, this.getSubmerchant_business_name());   </span>
           
-<span class="nc" id="L67">        } catch (JSONException ex) {</span>
-<span class="nc" id="L68">            ex.getMessage();</span>
-<span class="fc" id="L69">        }</span>
-<span class="fc" id="L70">        return json;</span>
+<span class="nc" id="L66">        } catch (JSONException ex) {</span>
+<span class="nc" id="L67">            ex.getMessage();</span>
+<span class="fc" id="L68">        }</span>
+<span class="fc" id="L69">        return json;</span>
     }
   public JSONObject chargeQR() throws JSONException {
-<span class="fc" id="L73">        JSONObject json = setJSON();</span>
+<span class="fc" id="L72">        JSONObject json = setJSON();</span>
 
-<span class="fc" id="L75">        String message = json.toString();</span>
-<span class="fc" id="L76">        String encrypt_secret_key = getKey(RaveConstant.SECRET_KEY);</span>
-<span class="fc" id="L77">        String client = encryptData(message, encrypt_secret_key);</span>
+<span class="fc" id="L74">        String message = json.toString();</span>
+<span class="fc" id="L75">        String encrypt_secret_key = getKey(RaveConstant.SECRET_KEY);</span>
+<span class="fc" id="L76">        String client = encryptData(message, encrypt_secret_key);</span>
 
-<span class="fc" id="L79">        Charge ch = new Charge();</span>
+<span class="fc" id="L78">        Charge ch = new Charge();</span>
 
-<span class="fc" id="L81">        return ch.charge(client);</span>
+<span class="fc" id="L80">        return ch.charge(client);</span>
 
     }
      public JSONObject verify(String txref){
-<span class="fc" id="L85">      this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());</span>
+<span class="fc" id="L84">      this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());</span>
       
-<span class="fc" id="L87">       ApiQuery api = new ApiQuery();</span>
+<span class="fc" id="L86">       ApiQuery api = new ApiQuery();</span>
 
-<span class="fc" id="L89">        api.putParams(&quot;SECKEY&quot;, RaveConstant.SECRET_KEY);</span>
-<span class="fc" id="L90">        api.putParams(&quot;txref&quot;, txref);</span>
-<span class="fc" id="L91">      return this.apiConnection.connectAndQuery(api);</span>
+<span class="fc" id="L88">        api.putParams(&quot;SECKEY&quot;, RaveConstant.SECRET_KEY);</span>
+<span class="fc" id="L89">        api.putParams(&quot;txref&quot;, txref);</span>
+<span class="fc" id="L90">      return this.apiConnection.connectAndQuery(api);</span>
     }
     /**
      * @return the amount
      */
     public String getAmount() {
-<span class="fc" id="L97">        return amount;</span>
+<span class="fc" id="L96">        return amount;</span>
     }
 
     /**
      * @param amount the amount to set
      */
     public void setAmount(String amount) {
-<span class="fc" id="L104">        this.amount = amount;</span>
-<span class="fc" id="L105">    }</span>
+<span class="fc" id="L103">        this.amount = amount;</span>
+<span class="fc" id="L104">    }</span>
 
     /**
      * @return the currency
      */
     public String getCurrency() {
-<span class="fc" id="L111">        return currency;</span>
+<span class="fc" id="L110">        return currency;</span>
     }
 
     /**
      * @param currency the currency to set
      */
     public void setCurrency(String currency) {
-<span class="fc" id="L118">        this.currency = currency;</span>
-<span class="fc" id="L119">    }</span>
+<span class="fc" id="L117">        this.currency = currency;</span>
+<span class="fc" id="L118">    }</span>
 
     /**
      * @return the country
      */
     public String getCountry() {
-<span class="fc" id="L125">        return country;</span>
+<span class="fc" id="L124">        return country;</span>
     }
 
     /**
      * @param country the country to set
      */
     public void setCountry(String country) {
-<span class="fc" id="L132">        this.country = country;</span>
-<span class="fc" id="L133">    }</span>
+<span class="fc" id="L131">        this.country = country;</span>
+<span class="fc" id="L132">    }</span>
 
     /**
      * @return the txRef
      */
     public String getTxRef() {
-<span class="fc" id="L139">        return txRef;</span>
+<span class="fc" id="L138">        return txRef;</span>
     }
 
     /**
      * @param txRef the txRef to set
      */
     public void setTxRef(String txRef) {
-<span class="fc" id="L146">        this.txRef = txRef;</span>
-<span class="fc" id="L147">    }</span>
+<span class="fc" id="L145">        this.txRef = txRef;</span>
+<span class="fc" id="L146">    }</span>
 
-    /**
-     * @return the is_qr
-     */
-    public String getIs_qr() {
-<span class="nc" id="L153">        return is_qr;</span>
-    }
-
-    /**
-     * @param is_qr the is_qr to set
-     */
-    public void setIs_qr(String is_qr) {
-<span class="fc" id="L160">        this.is_qr = is_qr;</span>
-<span class="fc" id="L161">    }</span>
-
-    /**
-     * @return the payment_type
-     */
-    public String getPayment_type() {
-<span class="nc" id="L167">        return payment_type;</span>
-    }
-
-    /**
-     * @param payment_type the payment_type to set
-     */
-    public void setPayment_type(String payment_type) {
-<span class="fc" id="L174">        this.payment_type = payment_type;</span>
-<span class="fc" id="L175">    }</span>
-
-    /**
-     * @return the IP
-     */
-    public String getIP() {
-<span class="fc" id="L181">        return IP;</span>
-    }
-
-    /**
-     * @param IP the IP to set
-     */
-    public void setIP(String IP) {
-<span class="nc" id="L188">        this.IP = IP;</span>
-<span class="nc" id="L189">    }</span>
 
     /**
      * @return the device_fingerprint
      */
     public String getDevice_fingerprint() {
-<span class="fc" id="L195">        return device_fingerprint;</span>
+<span class="fc" id="L153">        return device_fingerprint;</span>
     }
 
     /**
      * @param device_fingerprint the device_fingerprint to set
      */
     public void setDevice_fingerprint(String device_fingerprint) {
-<span class="nc" id="L202">        this.device_fingerprint = device_fingerprint;</span>
-<span class="nc" id="L203">    }</span>
+<span class="nc" id="L160">        this.device_fingerprint = device_fingerprint;</span>
+<span class="nc" id="L161">    }</span>
 
   
     /**
      * @return the email
      */
     public String getEmail() {
-<span class="fc" id="L210">        return email;</span>
+<span class="fc" id="L168">        return email;</span>
     }
 
     /**
      * @param email the email to set
      */
     public void setEmail(String email) {
-<span class="fc" id="L217">        this.email = email;</span>
-<span class="fc" id="L218">    }</span>
+<span class="fc" id="L175">        this.email = email;</span>
+<span class="fc" id="L176">    }</span>
 
     /**
      * @return the phonenumber
      */
     public String getPhonenumber() {
-<span class="fc" id="L224">        return phonenumber;</span>
+<span class="fc" id="L182">        return phonenumber;</span>
     }
 
     /**
      * @param phonenumber the phonenumber to set
      */
     public void setPhonenumber(String phonenumber) {
-<span class="nc" id="L231">        this.phonenumber = phonenumber;</span>
-<span class="nc" id="L232">    }</span>
+<span class="nc" id="L189">        this.phonenumber = phonenumber;</span>
+<span class="nc" id="L190">    }</span>
 
     /**
      * @return the firstname
      */
     public String getFirstname() {
-<span class="fc" id="L238">        return firstname;</span>
+<span class="fc" id="L196">        return firstname;</span>
     }
 
     /**
      * @param firstname the firstname to set
      */
     public void setFirstname(String firstname) {
-<span class="fc" id="L245">        this.firstname = firstname;</span>
-<span class="fc" id="L246">    }</span>
+<span class="fc" id="L203">        this.firstname = firstname;</span>
+<span class="fc" id="L204">    }</span>
 
     /**
      * @return the lastname
      */
     public String getLastname() {
-<span class="fc" id="L252">        return lastname;</span>
+<span class="fc" id="L210">        return lastname;</span>
     }
 
     /**
      * @param lastname the lastname to set
      */
     public void setLastname(String lastname) {
-<span class="nc" id="L259">        this.lastname = lastname;</span>
-<span class="nc" id="L260">    }</span>
+<span class="nc" id="L217">        this.lastname = lastname;</span>
+<span class="nc" id="L218">    }</span>
 
-    /**
-     * @return the submerchant_business_name
-     */
+   
     public String getSubmerchant_business_name() {
-<span class="fc" id="L266">        return submerchant_business_name;</span>
+<span class="fc" id="L222">        return submerchant_business_name;</span>
     }
 
     /**
      * @param submerchant_business_name the submerchant_business_name to set
      */
     public void setSubmerchant_business_name(String submerchant_business_name) {
-<span class="nc" id="L273">        this.submerchant_business_name = submerchant_business_name;</span>
-<span class="nc" id="L274">    }</span>
+<span class="nc" id="L229">        this.submerchant_business_name = submerchant_business_name;</span>
+<span class="nc" id="L230">    }</span>
 
     /**
      * @return the meta
      */
     public JSONObject getMeta() {
-<span class="fc" id="L280">        return meta;</span>
+<span class="fc" id="L236">        return meta;</span>
     }
 
     /**
      * @param meta the meta to set
      */
     public void setMeta(JSONObject meta) {
-<span class="nc" id="L287">        this.meta = meta;</span>
-<span class="nc" id="L288">    }</span>
+<span class="nc" id="L243">        this.meta = meta;</span>
+<span class="nc" id="L244">    }</span>
 
-    /**
-     * @return the metaname
-     */
+   
     public String getMetaname() {
-<span class="fc" id="L294">        return metaname;</span>
+<span class="fc" id="L248">        return metaname;</span>
     }
 
     /**
      * @param metaname the metaname to set
      */
     public void setMetaname(String metaname) {
-<span class="fc" id="L301">        this.metaname = metaname;</span>
-<span class="fc" id="L302">    }</span>
+<span class="fc" id="L255">        this.metaname = metaname;</span>
+<span class="fc" id="L256">    }</span>
 
     /**
      * @return the metavalue
      */
     public String getMetavalue() {
-<span class="fc" id="L308">        return metavalue;</span>
+<span class="fc" id="L262">        return metavalue;</span>
     }
 
     /**
      * @param metavalue the metavalue to set
      */
     public void setMetavalue(String metavalue) {
-<span class="fc" id="L315">        this.metavalue = metavalue;</span>
-<span class="fc" id="L316">    }</span>
+<span class="fc" id="L269">        this.metavalue = metavalue;</span>
+<span class="fc" id="L270">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

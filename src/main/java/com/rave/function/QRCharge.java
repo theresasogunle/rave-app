@@ -19,10 +19,10 @@ import org.json.JSONObject;
  * @author Tess
  */
 public class QRCharge {
-    
+
     ApiConnection apiConnection;
     Endpoint ed = new Endpoint();
-   
+
     private String amount;
     private String currency;
     private String country;
@@ -39,36 +39,30 @@ public class QRCharge {
     private String metaname;
     private String metavalue;
     private JSONObject meta = new JSONObject();
-    
-    
-      public JSONObject setJSON() {
-        JSONObject json = new JSONObject();
-       
-        try {
 
-          
-            json.put("currency", this.getCurrency());
-            json.put("country", this.getCountry());
-            json.put("amount", this.getAmount());
-            json.put("email", this.getEmail());
-            json.put("txRef", this.getTxRef());
-            json.put("device_fingerprint", this.getDevice_fingerprint());
-            json.put("firstname", this.getFirstname());
-            json.put("lastname", this.getLastname());
-            json.put("phonenumber", this.getPhonenumber());
-            json.put("meta", this.getMeta());
-            meta.put("metaname", this.getMetaname());
-            meta.put("metavalue", this.getMetavalue());
-            json.put("is_qr", "qr");
-            json.put("payment_type", "pwc_qr");
-            json.put("submerchant_business_name", this.getSubmerchant_business_name());   
-          
-        } catch (JSONException ex) {
-            ex.getMessage();
-        }
+    public JSONObject setJSON() throws JSONException {
+        JSONObject json = new JSONObject();
+
+        json.put("currency", this.getCurrency());
+        json.put("country", this.getCountry());
+        json.put("amount", this.getAmount());
+        json.put("email", this.getEmail());
+        json.put("txRef", this.getTxRef());
+        json.put("device_fingerprint", this.getDevice_fingerprint());
+        json.put("firstname", this.getFirstname());
+        json.put("lastname", this.getLastname());
+        json.put("phonenumber", this.getPhonenumber());
+        json.put("meta", this.getMeta());
+        meta.put("metaname", this.getMetaname());
+        meta.put("metavalue", this.getMetavalue());
+        json.put("is_qr", "qr");
+        json.put("payment_type", "pwc_qr");
+        json.put("submerchant_business_name", this.getSubmerchant_business_name());
+
         return json;
     }
-  public JSONObject chargeQR() throws JSONException {
+
+    public JSONObject chargeQR() throws JSONException {
         JSONObject json = setJSON();
 
         String message = json.toString();
@@ -80,15 +74,17 @@ public class QRCharge {
         return ch.charge(client);
 
     }
-     public JSONObject verify(String txref){
-      this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());
-      
-       ApiQuery api = new ApiQuery();
+
+    public JSONObject verify(String txref) {
+        this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());
+
+        ApiQuery api = new ApiQuery();
 
         api.putParams("SECKEY", RaveConstant.SECRET_KEY);
         api.putParams("txref", txref);
-      return this.apiConnection.connectAndQuery(api);
+        return this.apiConnection.connectAndQuery(api);
     }
+
     /**
      * @return the amount
      */
@@ -145,7 +141,6 @@ public class QRCharge {
         this.txRef = txRef;
     }
 
-
     /**
      * @return the device_fingerprint
      */
@@ -160,7 +155,6 @@ public class QRCharge {
         this.device_fingerprint = device_fingerprint;
     }
 
-  
     /**
      * @return the email
      */
@@ -217,7 +211,6 @@ public class QRCharge {
         this.lastname = lastname;
     }
 
-   
     public String getSubmerchant_business_name() {
         return submerchant_business_name;
     }
@@ -243,7 +236,6 @@ public class QRCharge {
         this.meta = meta;
     }
 
-   
     public String getMetaname() {
         return metaname;
     }

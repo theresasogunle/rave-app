@@ -8,63 +8,34 @@ package com.rave.function;
 import com.rave.config.ApiConnection;
 import com.rave.config.Encryption;
 import com.rave.config.Endpoint;
-import com.rave.config.RaveConstant;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+
+
+
 import org.json.JSONObject;
 
 /**
  *
  * @author Tess
  */
-<span class="fc" id="L22">public class BvnValidation {</span>
+<span class="fc" id="L20">public class BvnValidation {</span>
 
-    private String bvn_number;
+  
     ApiConnection apiConnection;
-<span class="fc" id="L26">    Endpoint ed = new Endpoint();</span>
-<span class="fc" id="L27">    Encryption e = new Encryption();</span>
+<span class="fc" id="L24">    Endpoint ed = new Endpoint();</span>
+<span class="fc" id="L25">    Encryption e = new Encryption();</span>
 
     public JSONObject validateBVN(String bvn) throws Exception {
-<span class="fc" id="L30">        this.apiConnection = new ApiConnection(ed.getBvnEndpoint());</span>
-<span class="fc" id="L31">        String seckey =&quot;FLWSECK-e6db11d1f8a6208de8cb2f94e293450e-X&quot;;</span>
-<span class="fc" id="L32">   String url =&quot;https://ravesandboxapi.flutterwave.com/v2/kyc/bvn/&quot;+bvn+&quot;?seckey=&quot;+seckey;</span>
-<span class="fc" id="L33">        System.out.println(url);</span>
+<span class="fc" id="L28">        this.apiConnection = new ApiConnection(ed.getBvnEndpoint());</span>
+<span class="fc" id="L29">        String seckey =&quot;FLWSECK-e6db11d1f8a6208de8cb2f94e293450e-X&quot;;</span>
+<span class="fc" id="L30">   String url =&quot;https://ravesandboxapi.flutterwave.com/v2/kyc/bvn/&quot;+bvn+&quot;?seckey=&quot;+seckey;</span>
+<span class="fc" id="L31">        System.out.println(url);</span>
 
        
-<span class="fc" id="L36">        return this.apiConnection.connectAndQueryWithGet(url);</span>
+<span class="fc" id="L34">        return this.apiConnection.connectAndQueryWithGet(url);</span>
 
     }
 
-    public static URI appendUri(String uri, String appendQuery) throws URISyntaxException {
-<span class="nc" id="L41">        URI oldUri = new URI(uri);</span>
-
-<span class="nc" id="L43">        String newQuery = oldUri.getQuery();</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (newQuery == null) {</span>
-<span class="nc" id="L45">            newQuery = appendQuery;</span>
-        } else {
-<span class="nc" id="L47">            newQuery += &quot;&amp;&quot; + appendQuery;</span>
-        }
-
-<span class="nc" id="L50">        URI newUri = new URI(oldUri.getScheme(), oldUri.getAuthority(),</span>
-<span class="nc" id="L51">                oldUri.getPath(), newQuery, oldUri.getFragment());</span>
-
-<span class="nc" id="L53">        return newUri;</span>
-    }
-
-    /**
-     * @return the bvn_number
-     */
-    public String getBvn_number() {
-<span class="nc" id="L60">        return bvn_number;</span>
-    }
-
-    /**
-     * @param bvn_number the bvn_number to set
-     */
-    public void setBvn_number(String bvn_number) {
-<span class="nc" id="L67">        this.bvn_number = bvn_number;</span>
-<span class="nc" id="L68">    }</span>
+   
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

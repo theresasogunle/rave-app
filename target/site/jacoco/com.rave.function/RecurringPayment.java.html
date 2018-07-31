@@ -347,8 +347,8 @@ import org.json.JSONObject;
      * @param billingzip the billingzip to set
      */
     public void setBillingzip(String billingzip) {
-<span class="nc" id="L350">        this.billingzip = billingzip;</span>
-<span class="nc" id="L351">    }</span>
+<span class="fc" id="L350">        this.billingzip = billingzip;</span>
+<span class="fc" id="L351">    }</span>
 
     /**
      * @return the billingcity
@@ -375,8 +375,8 @@ import org.json.JSONObject;
      * @param billingaddress the billingaddress to set
      */
     public void setBillingaddress(String billingaddress) {
-<span class="nc" id="L378">        this.billingaddress = billingaddress;</span>
-<span class="nc" id="L379">    }</span>
+<span class="fc" id="L378">        this.billingaddress = billingaddress;</span>
+<span class="fc" id="L379">    }</span>
 
     /**
      * @return the billingstate
@@ -389,8 +389,8 @@ import org.json.JSONObject;
      * @param billingstate the billingstate to set
      */
     public void setBillingstate(String billingstate) {
-<span class="nc" id="L392">        this.billingstate = billingstate;</span>
-<span class="nc" id="L393">    }</span>
+<span class="fc" id="L392">        this.billingstate = billingstate;</span>
+<span class="fc" id="L393">    }</span>
 
     /**
      * @return the billingcountry
@@ -403,8 +403,8 @@ import org.json.JSONObject;
      * @param billingcountry the billingcountry to set
      */
     public void setBillingcountry(String billingcountry) {
-<span class="nc" id="L406">        this.billingcountry = billingcountry;</span>
-<span class="nc" id="L407">    }</span>
+<span class="fc" id="L406">        this.billingcountry = billingcountry;</span>
+<span class="fc" id="L407">    }</span>
 
     /**
      * @return the email
@@ -430,93 +430,100 @@ import org.json.JSONObject;
     /**
      * @param phonenumber the phonenumber to set
      */
-    public void setPhonenumber(String phonenumber) {
-<span class="nc" id="L434">        this.phonenumber = phonenumber;</span>
-<span class="nc" id="L435">    }</span>
+    public RecurringPayment setPhonenumber(String phonenumber) {
+<span class="fc" id="L434">        this.phonenumber = phonenumber;</span>
+<span class="fc" id="L435">        return this;</span>
+    }
 
     /**
      * @return the firstname
      */
     public String getFirstname() {
-<span class="fc" id="L441">        return firstname;</span>
+<span class="fc" id="L442">        return firstname;</span>
     }
 
     /**
      * @param firstname the firstname to set
      */
-    public void setFirstname(String firstname) {
-<span class="nc" id="L448">        this.firstname = firstname;</span>
-<span class="nc" id="L449">    }</span>
+    public RecurringPayment setFirstname(String firstname) {
+<span class="nc" id="L449">        this.firstname = firstname;</span>
+<span class="nc" id="L450">        return this;</span>
+    }
 
     /**
      * @return the lastname
      */
     public String getLastname() {
-<span class="fc" id="L455">        return lastname;</span>
+<span class="fc" id="L457">        return lastname;</span>
     }
 
     /**
      * @param lastname the lastname to set
      */
-    public void setLastname(String lastname) {
-<span class="nc" id="L462">        this.lastname = lastname;</span>
-<span class="nc" id="L463">    }</span>
+    public  RecurringPayment setLastname(String lastname) {
+<span class="nc" id="L464">        this.lastname = lastname;</span>
+<span class="nc" id="L465">        return this;</span>
+    }
 
     /**
      * @return the redirect_url
      */
     public String getRedirect_url() {
-<span class="fc" id="L469">        return redirect_url;</span>
+<span class="fc" id="L472">        return redirect_url;</span>
     }
 
     /**
      * @param redirect_url the redirect_url to set
      */
-    public void setRedirect_url(String redirect_url) {
-<span class="fc" id="L476">        this.redirect_url = redirect_url;</span>
-<span class="fc" id="L477">    }</span>
+    public RecurringPayment setRedirect_url(String redirect_url) {
+<span class="fc" id="L479">        this.redirect_url = redirect_url;</span>
+<span class="fc" id="L480">        return this;</span>
+    }
 
     /**
      * @return the device_fingerprint
      */
     public String getDevice_fingerprint() {
-<span class="fc" id="L483">        return device_fingerprint;</span>
+<span class="fc" id="L487">        return device_fingerprint;</span>
     }
 
     /**
      * @param device_fingerprint the device_fingerprint to set
      */
-    public void setDevice_fingerprint(String device_fingerprint) {
-<span class="nc" id="L490">        this.device_fingerprint = device_fingerprint;</span>
-<span class="nc" id="L491">    }</span>
+    public RecurringPayment setDevice_fingerprint(String device_fingerprint) {
+<span class="nc" id="L494">        this.device_fingerprint = device_fingerprint;</span>
+<span class="nc" id="L495">        return this;</span>
+    }
 
     /**
      * @return the IP
      */
     public String getIP() {
-<span class="fc" id="L497">        return IP;</span>
+<span class="fc" id="L502">        return IP;</span>
     }
 
     /**
      * @param IP the IP to set
      */
     public void setIP(String IP) {
-<span class="nc" id="L504">        this.IP = IP;</span>
-<span class="nc" id="L505">    }</span>
+<span class="nc" id="L509">        this.IP = IP;</span>
+<span class="nc" id="L510">    }</span>
 
     /**
      * @return the charge_type
      */
     public String getCharge_type() {
-<span class="fc" id="L511">        return charge_type;</span>
+<span class="fc" id="L516">        return charge_type;</span>
     }
 
     /**
      * @param charge_type the charge_type to set
+     * @return RecurringPayment
      */
-    public void setCharge_type(String charge_type) {
-<span class="nc" id="L518">        this.charge_type = charge_type;</span>
-<span class="nc" id="L519">    }</span>
+    public RecurringPayment setCharge_type(String charge_type) {
+<span class="nc" id="L524">        this.charge_type = charge_type;</span>
+<span class="nc" id="L525">        return this;</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

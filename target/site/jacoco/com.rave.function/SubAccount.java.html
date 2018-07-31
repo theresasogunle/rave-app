@@ -49,15 +49,13 @@ import org.json.JSONObject;
 <span class="fc" id="L49">        api.putParams(&quot;business_contact&quot;, this.getBusiness_contact());</span>
 <span class="fc" id="L50">        api.putParams(&quot;business_mobile&quot;, this.getBusiness_mobile());</span>
 <span class="fc" id="L51">        api.putParams(&quot;seckey&quot;, RaveConstant.SECRET_KEY);</span>
-<span class="fc" id="L52">        api.putParams(&quot;split_value&quot;, this.getSplit_value());</span>
-<span class="fc" id="L53">        api.putParams(&quot;split_type&quot;, this.getSplit_type());</span>
-<span class="fc" id="L54">        api.putParams(&quot;meta&quot;, getMeta());</span>
-<span class="fc" id="L55">        api.putParams(&quot;amount&quot;, this.getAmount());</span>
-<span class="fc" id="L56">        getMeta().put(&quot;metaname&quot;, this.getMetaname());</span>
-<span class="fc" id="L57">        getMeta().put(&quot;metavalue&quot;, this.getMetavalue());</span>
+<span class="fc" id="L52">        api.putParams(&quot;meta&quot;, getMeta());</span>
+<span class="fc" id="L53">        api.putParams(&quot;amount&quot;, this.getAmount());</span>
+<span class="fc" id="L54">        getMeta().put(&quot;metaname&quot;, this.getMetaname());</span>
+<span class="fc" id="L55">        getMeta().put(&quot;metavalue&quot;, this.getMetavalue());</span>
        
 
-<span class="fc" id="L60">        return this.apiConnection.connectAndQuery(api);</span>
+<span class="fc" id="L58">        return this.apiConnection.connectAndQuery(api);</span>
 
     }
 
@@ -65,211 +63,180 @@ import org.json.JSONObject;
      * @return the account_bank
      */
     public String getAccount_bank() {
-<span class="fc" id="L68">        return account_bank;</span>
+<span class="fc" id="L66">        return account_bank;</span>
     }
 
     /**
      * @param account_bank the account_bank to set
      */
     public void setAccount_bank(String account_bank) {
-<span class="fc" id="L75">        this.account_bank = account_bank;</span>
-<span class="fc" id="L76">    }</span>
+<span class="fc" id="L73">        this.account_bank = account_bank;</span>
+<span class="fc" id="L74">    }</span>
 
     /**
      * @return the account_number
      */
     public String getAccount_number() {
-<span class="fc" id="L82">        return account_number;</span>
+<span class="fc" id="L80">        return account_number;</span>
     }
 
     /**
      * @param account_number the account_number to set
      */
     public void setAccount_number(String account_number) {
-<span class="fc" id="L89">        this.account_number = account_number;</span>
-<span class="fc" id="L90">    }</span>
+<span class="fc" id="L87">        this.account_number = account_number;</span>
+<span class="fc" id="L88">    }</span>
 
     /**
      * @return the business_name
      */
     public String getBusiness_name() {
-<span class="fc" id="L96">        return business_name;</span>
+<span class="fc" id="L94">        return business_name;</span>
     }
 
     /**
      * @param business_name the business_name to set
      */
     public void setBusiness_name(String business_name) {
-<span class="fc" id="L103">        this.business_name = business_name;</span>
-<span class="fc" id="L104">    }</span>
+<span class="fc" id="L101">        this.business_name = business_name;</span>
+<span class="fc" id="L102">    }</span>
 
     /**
      * @return the business_email
      */
     public String getBusiness_email() {
-<span class="fc" id="L110">        return business_email;</span>
+<span class="fc" id="L108">        return business_email;</span>
     }
 
     /**
      * @param business_email the business_email to set
      */
     public void setBusiness_email(String business_email) {
-<span class="fc" id="L117">        this.business_email = business_email;</span>
-<span class="fc" id="L118">    }</span>
+<span class="fc" id="L115">        this.business_email = business_email;</span>
+<span class="fc" id="L116">    }</span>
 
     /**
      * @return the business_contact
      */
     public String getBusiness_contact() {
-<span class="fc" id="L124">        return business_contact;</span>
+<span class="fc" id="L122">        return business_contact;</span>
     }
 
     /**
      * @param business_contact the business_contact to set
      */
     public void setBusiness_contact(String business_contact) {
-<span class="fc" id="L131">        this.business_contact = business_contact;</span>
-<span class="fc" id="L132">    }</span>
+<span class="fc" id="L129">        this.business_contact = business_contact;</span>
+<span class="fc" id="L130">    }</span>
 
     /**
      * @return the business_contact_mobile
      */
     public String getBusiness_contact_mobile() {
-<span class="fc" id="L138">        return business_contact_mobile;</span>
+<span class="fc" id="L136">        return business_contact_mobile;</span>
     }
 
     /**
      * @param business_contact_mobile the business_contact_mobile to set
      */
     public void setBusiness_contact_mobile(String business_contact_mobile) {
-<span class="fc" id="L145">        this.business_contact_mobile = business_contact_mobile;</span>
-<span class="fc" id="L146">    }</span>
+<span class="fc" id="L143">        this.business_contact_mobile = business_contact_mobile;</span>
+<span class="fc" id="L144">    }</span>
 
     /**
      * @return the business_mobile
      */
     public String getBusiness_mobile() {
-<span class="fc" id="L152">        return business_mobile;</span>
+<span class="fc" id="L150">        return business_mobile;</span>
     }
 
     /**
      * @param business_mobile the business_mobile to set
      */
     public void setBusiness_mobile(String business_mobile) {
-<span class="fc" id="L159">        this.business_mobile = business_mobile;</span>
-<span class="fc" id="L160">    }</span>
+<span class="fc" id="L157">        this.business_mobile = business_mobile;</span>
+<span class="fc" id="L158">    }</span>
 
     /**
      * @return the seckey
      */
     public String getSeckey() {
-<span class="nc" id="L166">        return seckey;</span>
+<span class="nc" id="L164">        return seckey;</span>
     }
 
     /**
      * @param seckey the seckey to set
      */
     public void setSeckey(String seckey) {
-<span class="nc" id="L173">        this.seckey = seckey;</span>
-<span class="nc" id="L174">    }</span>
+<span class="nc" id="L171">        this.seckey = seckey;</span>
+<span class="nc" id="L172">    }</span>
 
-    /**
-     * @return the split_type
-     */
-    public String getSplit_type() {
-<span class="fc" id="L180">        return split_type;</span>
-    }
-
-    /**
-     * @param split_type the split_type to set
-     */
-    public void setSplit_type(String split_type) {
-<span class="nc" id="L187">        this.split_type = split_type;</span>
-<span class="nc" id="L188">    }</span>
-
-    /**
-     * @return the split_value
-     */
-    public String getSplit_value() {
-<span class="fc" id="L194">        return split_value;</span>
-    }
-
+   
+    
     /**
      * @param split_value the split_value to set
      */
     public void setSplit_value(String split_value) {
-<span class="nc" id="L201">        this.split_value = split_value;</span>
-<span class="nc" id="L202">    }</span>
+<span class="nc" id="L180">        this.split_value = split_value;</span>
+<span class="nc" id="L181">    }</span>
 
-    /**
-     * @return the content_type
-     */
-    public String getContent_type() {
-<span class="nc" id="L208">        return content_type;</span>
-    }
-
-    /**
-     * @param content_type the content_type to set
-     */
-    public void setContent_type(String content_type) {
-<span class="nc" id="L215">        this.content_type = content_type;</span>
-<span class="nc" id="L216">    }</span>
+ 
 
     /**
      * @return the meta
      */
     public JSONObject getMeta() {
-<span class="fc" id="L222">        return meta;</span>
+<span class="fc" id="L189">        return meta;</span>
     }
 
     /**
      * @param meta the meta to set
      */
     public void setMeta(JSONObject meta) {
-<span class="nc" id="L229">        this.meta = meta;</span>
-<span class="nc" id="L230">    }</span>
+<span class="nc" id="L196">        this.meta = meta;</span>
+<span class="nc" id="L197">    }</span>
 
     /**
      * @return the metaname
      */
     public String getMetaname() {
-<span class="fc" id="L236">        return metaname;</span>
+<span class="fc" id="L203">        return metaname;</span>
     }
 
     /**
      * @param metaname the metaname to set
      */
     public void setMetaname(String metaname) {
-<span class="fc" id="L243">        this.metaname = metaname;</span>
-<span class="fc" id="L244">    }</span>
+<span class="fc" id="L210">        this.metaname = metaname;</span>
+<span class="fc" id="L211">    }</span>
 
     /**
      * @return the metavalue
      */
     public String getMetavalue() {
-<span class="fc" id="L250">        return metavalue;</span>
+<span class="fc" id="L217">        return metavalue;</span>
     }
 
     /**
      * @param metavalue the metavalue to set
      */
     public void setMetavalue(String metavalue) {
-<span class="fc" id="L257">        this.metavalue = metavalue;</span>
-<span class="fc" id="L258">    }</span>
+<span class="fc" id="L224">        this.metavalue = metavalue;</span>
+<span class="fc" id="L225">    }</span>
 
     /**
      * @return the amount
      */
     public String getAmount() {
-<span class="fc" id="L264">        return amount;</span>
+<span class="fc" id="L231">        return amount;</span>
     }
 
     /**
      * @param amount the amount to set
      */
     public void setAmount(String amount) {
-<span class="fc" id="L271">        this.amount = amount;</span>
-<span class="fc" id="L272">    }</span>
+<span class="fc" id="L238">        this.amount = amount;</span>
+<span class="fc" id="L239">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

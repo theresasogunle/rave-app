@@ -40,6 +40,9 @@ public class AccountChargeTestCase {
                 .setLastname("Theresa")
                 .setRedirect_url("www.google.com")
                 .setTxRef("MX-678DH")
+                .setPasscode("2777")
+                .setDevice_fingerprint("teywuiqo373773")
+                .setPhonenumber("090278916782")
                 .setEmail("sogunledolapo@gmail.com");
 
         JSONObject result = ch.chargeAccount();

@@ -54,9 +54,9 @@ public class RecurringPayment {
 
     private JSONObject meta = new JSONObject();
 
-    public JSONObject setJSON() {
+    public JSONObject setJSON() throws JSONException{
         JSONObject json = new JSONObject();
-        try {
+        
 
             json.put("cardno", this.getCardno());
             json.put("cvv", this.getCvv());
@@ -66,7 +66,6 @@ public class RecurringPayment {
             json.put("expiryyear", this.getExpiryyear());
             json.put("expirymonth", this.getExpirymonth());
             json.put("email", this.getEmail());
-            json.put("IP", this.getIP());
             json.put("txRef", this.getTxRef());
             json.put("device_fingerprint", this.getDevice_fingerprint());
             json.put("meta", getMeta());
@@ -77,9 +76,7 @@ public class RecurringPayment {
             json.put("redirect_url", this.getRedirect_url());
             json.put("charge_type", this.getCharge_type());
             json.put("payment_plan", this.getPayment_plan());
-        } catch (JSONException ex) {
-            ex.getMessage();
-        }
+       
         return json;
     }
 
@@ -445,9 +442,9 @@ public class RecurringPayment {
     /**
      * @param firstname the firstname to set
      */
-    public RecurringPayment setFirstname(String firstname) {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
-        return this;
+        
     }
 
     /**
@@ -460,9 +457,9 @@ public class RecurringPayment {
     /**
      * @param lastname the lastname to set
      */
-    public  RecurringPayment setLastname(String lastname) {
+    public  void setLastname(String lastname) {
         this.lastname = lastname;
-        return this;
+        
     }
 
     /**
@@ -490,25 +487,12 @@ public class RecurringPayment {
     /**
      * @param device_fingerprint the device_fingerprint to set
      */
-    public RecurringPayment setDevice_fingerprint(String device_fingerprint) {
+    public void setDevice_fingerprint(String device_fingerprint) {
         this.device_fingerprint = device_fingerprint;
-        return this;
+       
     }
 
-    /**
-     * @return the IP
-     */
-    public String getIP() {
-        return IP;
-    }
-
-    /**
-     * @param IP the IP to set
-     */
-    public void setIP(String IP) {
-        this.IP = IP;
-    }
-
+   
     /**
      * @return the charge_type
      */
@@ -520,9 +504,9 @@ public class RecurringPayment {
      * @param charge_type the charge_type to set
      * @return RecurringPayment
      */
-    public RecurringPayment setCharge_type(String charge_type) {
+    public void setCharge_type(String charge_type) {
         this.charge_type = charge_type;
-        return this;
+        
     }
 
 }

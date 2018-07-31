@@ -157,20 +157,7 @@ public class SubAccount {
         this.business_mobile = business_mobile;
     }
 
-    /**
-     * @return the seckey
-     */
-    public String getSeckey() {
-        return seckey;
-    }
-
-    /**
-     * @param seckey the seckey to set
-     */
-    public void setSeckey(String seckey) {
-        this.seckey = seckey;
-    }
-
+    
    
     
     /**
@@ -189,12 +176,7 @@ public class SubAccount {
         return meta;
     }
 
-    /**
-     * @param meta the meta to set
-     */
-    public void setMeta(JSONObject meta) {
-        this.meta = meta;
-    }
+   
 
     /**
      * @return the metaname

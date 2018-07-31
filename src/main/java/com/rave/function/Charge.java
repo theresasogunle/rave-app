@@ -20,16 +20,13 @@ public class Charge {
 
     ApiConnection apiConnection;
     Endpoint ed = new Endpoint();
-   
-   
-     /**
+
+    /**
      *
      *
      *
      * @return JSONObject
      */
-   
-     
     public JSONObject charge(String client) {
         this.apiConnection = new ApiConnection(ed.getChargeEndPoint());
 
@@ -54,7 +51,6 @@ public class Charge {
      * @param otp
      *
      */
-
     public JSONObject validateAccountCharge(String transaction_reference, String otp) {
 
         this.apiConnection = new ApiConnection(ed.getValidateAccountChargeEndPoint());
@@ -77,7 +73,6 @@ public class Charge {
      * @param otp
      *
      */
-
     public JSONObject validateCardCharge(String transaction_reference, String otp) {
 
         this.apiConnection = new ApiConnection(ed.getValidateCardChargeEndPoint());
@@ -91,16 +86,5 @@ public class Charge {
 
         return this.apiConnection.connectAndQuery(api);
     }
-    
-    public JSONObject verify(String txref){
-      this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());
-      
-       ApiQuery api = new ApiQuery();
 
-        api.putParams("SECKEY", RaveConstant.SECRET_KEY);
-        api.putParams("txref", txref);
-      return this.apiConnection.connectAndQuery(api);
-    }
-
-  
 }

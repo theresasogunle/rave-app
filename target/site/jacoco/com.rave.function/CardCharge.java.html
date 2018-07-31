@@ -95,11 +95,11 @@ import org.json.JSONObject;
     }
 
     public JSONObject recharge(String suggested_auth) throws JSONException {
-<span class="nc" id="L98">        JSONObject json = setJSON();</span>
-<span class="nc" id="L99">        Charge ch = new Charge();</span>
+<span class="fc" id="L98">        JSONObject json = setJSON();</span>
+<span class="fc" id="L99">        Charge ch = new Charge();</span>
 
-<span class="nc" id="L101">        JSONObject charge = new JSONObject();</span>
-<span class="nc bnc" id="L102" title="All 2 branches missed.">        if (suggested_auth.equals(&quot;PIN&quot;)) {</span>
+<span class="fc" id="L101">        JSONObject charge = new JSONObject();</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        if (suggested_auth.equals(&quot;PIN&quot;)) {</span>
 <span class="nc" id="L103">            json.put(&quot;suggested_auth&quot;, suggested_auth);</span>
 <span class="nc" id="L104">            System.out.println(suggested_auth);</span>
 <span class="nc" id="L105">            json.put(&quot;pin&quot;, this.getPin());</span>
@@ -109,19 +109,19 @@ import org.json.JSONObject;
 <span class="nc" id="L109">            String client = encryptData(message, encrypt_secret_key);</span>
 <span class="nc" id="L110">            charge = ch.charge(client);</span>
 
-<span class="nc bnc" id="L112" title="All 4 branches missed.">        } else if (suggested_auth.equalsIgnoreCase(&quot;NOAUTH_INTERNATIONAL&quot;)||suggested_auth.equalsIgnoreCase(&quot;AVS_VBVSECURECODE&quot;)) {</span>
-<span class="nc" id="L113">            json.put(&quot;suggested_auth&quot;, suggested_auth);</span>
-<span class="nc" id="L114">            json.put(&quot;billingzip&quot;, this.getBillingzip());</span>
-<span class="nc" id="L115">            json.put(&quot;billingcity&quot;, this.getBillingcity());</span>
-<span class="nc" id="L116">            json.put(&quot;billingaddress&quot;, this.getBillingaddress());</span>
-<span class="nc" id="L117">            json.put(&quot;billingstate&quot;, this.getBillingstate());</span>
-<span class="nc" id="L118">            json.put(&quot;billingcountry&quot;, this.getBillingcountry());</span>
-<span class="nc" id="L119">            String message = json.toString();</span>
-<span class="nc" id="L120">            String encrypt_secret_key = getKey(RaveConstant.SECRET_KEY);</span>
-<span class="nc" id="L121">            String client = encryptData(message, encrypt_secret_key);</span>
-<span class="nc" id="L122">            charge = ch.charge(client);</span>
+<span class="pc bpc" id="L112" title="3 of 4 branches missed.">        } else if (suggested_auth.equalsIgnoreCase(&quot;NOAUTH_INTERNATIONAL&quot;)||suggested_auth.equalsIgnoreCase(&quot;AVS_VBVSECURECODE&quot;)) {</span>
+<span class="fc" id="L113">            json.put(&quot;suggested_auth&quot;, suggested_auth);</span>
+<span class="fc" id="L114">            json.put(&quot;billingzip&quot;, this.getBillingzip());</span>
+<span class="fc" id="L115">            json.put(&quot;billingcity&quot;, this.getBillingcity());</span>
+<span class="fc" id="L116">            json.put(&quot;billingaddress&quot;, this.getBillingaddress());</span>
+<span class="fc" id="L117">            json.put(&quot;billingstate&quot;, this.getBillingstate());</span>
+<span class="fc" id="L118">            json.put(&quot;billingcountry&quot;, this.getBillingcountry());</span>
+<span class="fc" id="L119">            String message = json.toString();</span>
+<span class="fc" id="L120">            String encrypt_secret_key = getKey(RaveConstant.SECRET_KEY);</span>
+<span class="fc" id="L121">            String client = encryptData(message, encrypt_secret_key);</span>
+<span class="fc" id="L122">            charge = ch.charge(client);</span>
         }
-<span class="nc" id="L124">        return charge;</span>
+<span class="fc" id="L124">        return charge;</span>
     }
 
   
@@ -138,13 +138,13 @@ import org.json.JSONObject;
     }
 
       public JSONObject verify(String txref){
-<span class="nc" id="L141">      this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());</span>
+<span class="fc" id="L141">      this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());</span>
       
-<span class="nc" id="L143">       ApiQuery api = new ApiQuery();</span>
+<span class="fc" id="L143">       ApiQuery api = new ApiQuery();</span>
 
-<span class="nc" id="L145">        api.putParams(&quot;SECKEY&quot;, RaveConstant.SECRET_KEY);</span>
-<span class="nc" id="L146">        api.putParams(&quot;txref&quot;, txref);</span>
-<span class="nc" id="L147">      return this.apiConnection.connectAndQuery(api);</span>
+<span class="fc" id="L145">        api.putParams(&quot;SECKEY&quot;, RaveConstant.SECRET_KEY);</span>
+<span class="fc" id="L146">        api.putParams(&quot;txref&quot;, txref);</span>
+<span class="fc" id="L147">      return this.apiConnection.connectAndQuery(api);</span>
     }
 
     
@@ -264,9 +264,9 @@ import org.json.JSONObject;
      * @return CardCharge
      */
     public CardCharge setPin(String pin) {
-<span class="nc" id="L267">        this.pin = pin;</span>
+<span class="fc" id="L267">        this.pin = pin;</span>
 
-<span class="nc" id="L269">        return this;</span>
+<span class="fc" id="L269">        return this;</span>
     }
 
     /**
@@ -494,70 +494,70 @@ import org.json.JSONObject;
      * @return the billingzip
      */
     public String getBillingzip() {
-<span class="nc" id="L497">        return billingzip;</span>
+<span class="fc" id="L497">        return billingzip;</span>
     }
 
     /**
      * @param billingzip the billingzip to set
      */
     public void setBillingzip(String billingzip) {
-<span class="nc" id="L504">        this.billingzip = billingzip;</span>
-<span class="nc" id="L505">    }</span>
+<span class="fc" id="L504">        this.billingzip = billingzip;</span>
+<span class="fc" id="L505">    }</span>
 
     /**
      * @return the billingcity
      */
     public String getBillingcity() {
-<span class="nc" id="L511">        return billingcity;</span>
+<span class="fc" id="L511">        return billingcity;</span>
     }
 
     /**
      * @param billingcity the billingcity to set
      */
     public void setBillingcity(String billingcity) {
-<span class="nc" id="L518">        this.billingcity = billingcity;</span>
-<span class="nc" id="L519">    }</span>
+<span class="fc" id="L518">        this.billingcity = billingcity;</span>
+<span class="fc" id="L519">    }</span>
 
     /**
      * @return the billingaddress
      */
     public String getBillingaddress() {
-<span class="nc" id="L525">        return billingaddress;</span>
+<span class="fc" id="L525">        return billingaddress;</span>
     }
 
     /**
      * @param billingaddress the billingaddress to set
      */
     public void setBillingaddress(String billingaddress) {
-<span class="nc" id="L532">        this.billingaddress = billingaddress;</span>
-<span class="nc" id="L533">    }</span>
+<span class="fc" id="L532">        this.billingaddress = billingaddress;</span>
+<span class="fc" id="L533">    }</span>
 
     /**
      * @return the billingstate
      */
     public String getBillingstate() {
-<span class="nc" id="L539">        return billingstate;</span>
+<span class="fc" id="L539">        return billingstate;</span>
     }
 
     /**
      * @param billingstate the billingstate to set
      */
     public void setBillingstate(String billingstate) {
-<span class="nc" id="L546">        this.billingstate = billingstate;</span>
-<span class="nc" id="L547">    }</span>
+<span class="fc" id="L546">        this.billingstate = billingstate;</span>
+<span class="fc" id="L547">    }</span>
 
     /**
      * @return the billingcountry
      */
     public String getBillingcountry() {
-<span class="nc" id="L553">        return billingcountry;</span>
+<span class="fc" id="L553">        return billingcountry;</span>
     }
 
     /**
      * @param billingcountry the billingcountry to set
      */
     public void setBillingcountry(String billingcountry) {
-<span class="nc" id="L560">        this.billingcountry = billingcountry;</span>
-<span class="nc" id="L561">    }</span>
+<span class="fc" id="L560">        this.billingcountry = billingcountry;</span>
+<span class="fc" id="L561">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

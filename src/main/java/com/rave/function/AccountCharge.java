@@ -31,9 +31,9 @@ public class AccountCharge {
     private String transaction_reference;//to be called
     private String otp;//to be called
 
-    public JSONObject setJSON() {
+    public JSONObject setJSON() throws JSONException {
         JSONObject json = new JSONObject();
-        try {
+        
             json.put("PBFPubKey", RaveConstant.PUBLIC_KEY);
             json.put("accountnumber", this.getAccountnumber());//expected result'
             json.put("accountbank", this.getAccountbank());
@@ -48,9 +48,7 @@ public class AccountCharge {
             json.put("txRef", this.getTxRef());
             json.put("redirect_url", this.getRedirect_url());
 
-        } catch (JSONException ex) {
-            ex.getMessage();
-        }
+       
         return json;
     }
 

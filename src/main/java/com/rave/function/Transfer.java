@@ -159,19 +159,7 @@ public class Transfer {
         this.currency = currency;
     }
 
-    /**
-     * @return the seckey
-     */
-    public String getSeckey() {
-        return seckey;
-    }
-
-    /**
-     * @param seckey the seckey to set
-     */
-    public void setSeckey(String seckey) {
-        this.seckey = seckey;
-    }
+  
 
     /**
      * @return the reference

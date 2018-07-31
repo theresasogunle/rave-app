@@ -36,6 +36,8 @@ public class QRChargeTestCase {
           ch.setMetaname("flightid");
           ch.setMetavalue("93849-MK5000");
           ch.setTxRef("m3s4m0c1526722407366");
+          ch.setSubmerchant_business_name("Good Enterprise");
+         
                 
           
           JSONObject charge =ch.chargeQR();

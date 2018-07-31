@@ -37,7 +37,9 @@ public class TransferTestCase {
 
         Transfer tr = new Transfer();
         tr.setAccount_bank("044");
-        tr.setAccount_number("");
+        tr.setAccount_number("0690000035");
+        tr.setAmount("5000");
+        
 
         JSONObject response = tr.createTransferRecepient();
 
@@ -61,11 +63,12 @@ public class TransferTestCase {
         Transfer tr = new Transfer();
 
         tr.setAccount_bank("044");
-        tr.setAccount_number("");
-        tr.setAmount("");
+        tr.setAccount_number("0690000035");
+        tr.setAmount("300-");
         tr.setCurrency("NGN");
-        tr.setNarration("");
-        tr.setReference("");
+        tr.setNarration("First");
+        tr.setReference("029");
+        tr.setRecipient_id("89289");
 
         JSONObject response = tr.initiateTransfer();
 
