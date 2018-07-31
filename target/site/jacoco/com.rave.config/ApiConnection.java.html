@@ -5,11 +5,9 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import java.net.URL;
 import org.json.JSONObject;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.net.ssl.SSLContext;
@@ -31,29 +29,29 @@ public class ApiConnection {
     /**
      * @param url - Flutterwave API url
      */
-<span class="fc" id="L34">    public ApiConnection(String url) {</span>
-<span class="fc" id="L35">       this.url = url;</span>
-<span class="fc" id="L36">     this.enforceTlsV1point2();</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L32">    public ApiConnection(String url) {</span>
+<span class="fc" id="L33">       this.url = url;</span>
+<span class="fc" id="L34">     this.enforceTlsV1point2();</span>
+<span class="fc" id="L35">    }</span>
      private void enforceTlsV1point2() {
         try {
-<span class="fc" id="L40">            SSLContext sslContext = SSLContexts.custom()</span>
-<span class="fc" id="L41">                    .useTLS()</span>
-<span class="fc" id="L42">                    .build();</span>
-<span class="fc" id="L43">            SSLConnectionSocketFactory f = new SSLConnectionSocketFactory(</span>
+<span class="fc" id="L38">            SSLContext sslContext = SSLContexts.custom()</span>
+<span class="fc" id="L39">                    .useTLS()</span>
+<span class="fc" id="L40">                    .build();</span>
+<span class="fc" id="L41">            SSLConnectionSocketFactory f = new SSLConnectionSocketFactory(</span>
                     sslContext,
                     new String[]{&quot;TLSv1.2&quot;},
                     null,
                     BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
-<span class="fc" id="L48">            CloseableHttpClient httpClient = HttpClients.custom()</span>
-<span class="fc" id="L49">                    .setSSLSocketFactory(f)</span>
-<span class="fc" id="L50">                    .build();</span>
-<span class="fc" id="L51">            Unirest.setHttpClient(httpClient);</span>
+<span class="fc" id="L46">            CloseableHttpClient httpClient = HttpClients.custom()</span>
+<span class="fc" id="L47">                    .setSSLSocketFactory(f)</span>
+<span class="fc" id="L48">                    .build();</span>
+<span class="fc" id="L49">            Unirest.setHttpClient(httpClient);</span>
 
-<span class="nc" id="L53">        } catch (NoSuchAlgorithmException | KeyManagementException ex) {</span>
-<span class="nc" id="L54">            Logger.getLogger(ApiConnection.class.getName()).log(Level.SEVERE, null, ex);</span>
-<span class="fc" id="L55">        }</span>
-<span class="fc" id="L56">    }</span>
+<span class="nc" id="L51">        } catch (NoSuchAlgorithmException | KeyManagementException ex) {</span>
+<span class="nc" id="L52">            Logger.getLogger(ApiConnection.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="fc" id="L53">        }</span>
+<span class="fc" id="L54">    }</span>
 
      
     /**
@@ -64,38 +62,21 @@ public class ApiConnection {
      */
     public JSONObject connectAndQuery(ApiQuery query) {
         try {
-<span class="fc" id="L67">            HttpResponse&lt;JsonNode&gt; queryForResponse = Unirest.post(url)</span>
-<span class="fc" id="L68">                    .header(&quot;Accept&quot;, &quot;application/json&quot;)</span>
-<span class="fc" id="L69">                    .fields(query.getParams())</span>
-<span class="fc" id="L70">                    .asJson();</span>
+<span class="fc" id="L65">            HttpResponse&lt;JsonNode&gt; queryForResponse = Unirest.post(url)</span>
+<span class="fc" id="L66">                    .header(&quot;Accept&quot;, &quot;application/json&quot;)</span>
+<span class="fc" id="L67">                    .fields(query.getParams())</span>
+<span class="fc" id="L68">                    .asJson();</span>
             
            
             
             try{
-<span class="fc" id="L75">            return queryForResponse.getBody().getObject();</span>
-<span class="nc" id="L76">            }catch(Exception ex){}</span>
-<span class="nc" id="L77">        } catch (UnirestException e) {</span>
-<span class="nc" id="L78">    }</span>
-<span class="nc" id="L79">         return  null;</span>
+<span class="fc" id="L73">            return queryForResponse.getBody().getObject();</span>
+<span class="nc" id="L74">            }catch(Exception ex){}</span>
+<span class="nc" id="L75">        } catch (UnirestException e) {</span>
+<span class="nc" id="L76">    }</span>
+<span class="nc" id="L77">         return  null;</span>
     }
-    /**
-     * Connects to and queries API with POST
-     *
-     * @param query - HashMap containing parameters to send
-     * @return - JSONObject containing API response
-     */
-    public JSONObject connectAndQuery(HashMap&lt;String, Object&gt; query) {
-        try {
-<span class="nc" id="L89">            HttpResponse&lt;JsonNode&gt; queryForResponse = Unirest.post(url)</span>
-<span class="nc" id="L90">                    .header(&quot;Accept&quot;, &quot;application/json&quot;)</span>
-                    
-<span class="nc" id="L92">                    .fields(query)</span>
-<span class="nc" id="L93">                    .asJson();</span>
-<span class="nc" id="L94">            return queryForResponse.getBody().getObject();</span>
-<span class="nc" id="L95">        } catch (UnirestException e) {</span>
-        }
-<span class="nc" id="L97">        return null;</span>
-    }
+    
 
     /**
      * Used to send a GET request to the Flutterwave API
@@ -104,32 +85,18 @@ public class ApiConnection {
      */
     public JSONObject connectAndQueryWithGet(String urll) {
         try {
-<span class="fc" id="L107">            HttpResponse&lt;JsonNode&gt; queryForResponse = Unirest.get(urll)</span>
-<span class="fc" id="L108">                    .header(&quot;content-type&quot;, &quot;application/json&quot;)</span>
+<span class="fc" id="L88">            HttpResponse&lt;JsonNode&gt; queryForResponse = Unirest.get(urll)</span>
+<span class="fc" id="L89">                    .header(&quot;content-type&quot;, &quot;application/json&quot;)</span>
                     
-<span class="fc" id="L110">                    .asJson();</span>
+<span class="fc" id="L91">                    .asJson();</span>
             
-<span class="fc" id="L112">            return queryForResponse.getBody().getObject();</span>
+<span class="fc" id="L93">            return queryForResponse.getBody().getObject();</span>
            
-<span class="nc" id="L114">        } catch (UnirestException e) {</span>
-<span class="nc" id="L115">            System.out.println(&quot;Cant query at this time!&quot;);</span>
+<span class="nc" id="L95">        } catch (UnirestException e) {</span>
+<span class="nc" id="L96">            System.out.println(&quot;Cant query at this time!&quot;);</span>
         }
-<span class="nc" id="L117">        return null;</span>
+<span class="nc" id="L98">        return null;</span>
     }
-    public JSONObject connectAndQueryWithGett() {
-        try {
-<span class="nc" id="L121">            HttpResponse&lt;JsonNode&gt; queryForResponse = Unirest.get(url)</span>
-<span class="nc" id="L122">                    .header(&quot;content-type&quot;, &quot;application/json&quot;)</span>
-                    
-<span class="nc" id="L124">                    .asJson();</span>
-            
-<span class="nc" id="L126">            return queryForResponse.getBody().getObject();</span>
-           
-<span class="nc" id="L128">        } catch (UnirestException e) {</span>
-<span class="nc" id="L129">            System.out.println(&quot;Cant query at this time!&quot;);</span>
-        }
-<span class="nc" id="L131">        return null;</span>
-    }
-
+  
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>

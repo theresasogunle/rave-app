@@ -57,6 +57,21 @@ public class QRChargeTestCase {
                 
         }
   
+       JSONObject verify=  ch.verify("2779390393");
+       
+       
+         if(verify.get("status").equals("success")){
+                assertEquals(verify.get("status"),"success");
+             
+                System.out.println(verify);
+        }else
+        {
+                assertEquals(verify.get("status"),"error");
+                System.out.println(verify);
+                
+        }
+       
+       
 
     }
 }

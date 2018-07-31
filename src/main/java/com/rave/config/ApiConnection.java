@@ -5,11 +5,9 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import java.net.URL;
 import org.json.JSONObject;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.net.ssl.SSLContext;
@@ -78,24 +76,7 @@ public class ApiConnection {
     }
          return  null;
     }
-    /**
-     * Connects to and queries API with POST
-     *
-     * @param query - HashMap containing parameters to send
-     * @return - JSONObject containing API response
-     */
-    public JSONObject connectAndQuery(HashMap<String, Object> query) {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.post(url)
-                    .header("Accept", "application/json")
-                    
-                    .fields(query)
-                    .asJson();
-            return queryForResponse.getBody().getObject();
-        } catch (UnirestException e) {
-        }
-        return null;
-    }
+    
 
     /**
      * Used to send a GET request to the Flutterwave API
@@ -116,19 +97,5 @@ public class ApiConnection {
         }
         return null;
     }
-    public JSONObject connectAndQueryWithGett() {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
-                    .header("content-type", "application/json")
-                    
-                    .asJson();
-            
-            return queryForResponse.getBody().getObject();
-           
-        } catch (UnirestException e) {
-            System.out.println("Cant query at this time!");
-        }
-        return null;
-    }
-
+  
 }

@@ -20,24 +20,22 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import org.json.JSONObject;
+
 /**
  *
  * @author Theresa
  */
 
-
 public class Encryption {
-   
-   
-    RaveConstant keys= new RaveConstant();
-   
-        
+
+    RaveConstant keys = new RaveConstant();
+
     // Method to turn bytes in hex
-    public static String toHexStr(byte[] bytes){
+    public static String toHexStr(byte[] bytes) {
 
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i < bytes.length; i++ ){
+        for (int i = 0; i < bytes.length; i++) {
             builder.append(String.format("%02x", bytes[i]));
         }
 
@@ -63,12 +61,12 @@ public class Encryption {
     }
 
     // This is the encryption function that encrypts your payload by passing the stringified format and your encryption Key.
-    public static String encryptData(String message, String _encryptionKey)  {
+    public static String encryptData(String message, String _encryptionKey) {
         try {
             final byte[] digestOfPassword = _encryptionKey.getBytes("utf-8");
             final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
 
-            final SecretKey key = new SecretKeySpec( keyBytes , "DESede");
+            final SecretKey key = new SecretKeySpec(keyBytes, "DESede");
             final Cipher cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, key);
             final byte[] plainTextBytes = message.getBytes("utf-8");
@@ -77,62 +75,30 @@ public class Encryption {
 
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
 
-          
             return "";
         }
-        
+
     }
 
     /**
-    *
-    * @param api(JSON object)
-    * @return String
-    */
-    
+     *
+     * @param api(JSON object)
+     * @return String
+     */
     public String encryptParameters(JSONObject api) {
-           
-        try{
-            api.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
-        }catch(Exception ex){}
-        
-      
-        
-        String message= api.toString();
-        
-        String encrypt_secret_key=getKey(RaveConstant.SECRET_KEY);
-        String encrypted_message= encryptData(message,encrypt_secret_key);
 
+        try {
+            api.put("PBFPubKey", RaveConstant.PUBLIC_KEY);
+        } catch (Exception ex) {
+        }
+
+        String message = api.toString();
+
+        String encrypt_secret_key = getKey(RaveConstant.SECRET_KEY);
+        String encrypted_message = encryptData(message, encrypt_secret_key);
 
         return encrypted_message;
 
     }
- /**
-    *
-    * 
-    * @return String
-    * @param api 
-    * 
-    */
-    
 
-    public String encryptParametersPreAuth(JSONObject api){
-           
-        try{
-            api.put("PBFPubKey","FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X");
-        }catch(Exception ex){}
-        
-        String message= api.toString();
-        
-        
-        
-        String encrypt_secret_key=getKey("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
-        String encrypted_message= encryptData(message,encrypt_secret_key);
-
-      
-        return encrypted_message;
-
-    }
-        
-       
-    
 }

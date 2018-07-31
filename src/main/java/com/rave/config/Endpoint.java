@@ -12,9 +12,8 @@ package com.rave.config;
 public class Endpoint {
 
     RaveConstant key = new RaveConstant();
- 
+
     String staging_url = "https://ravesandboxapi.flutterwave.com/";
-    String live_url = "https://api.ravepay.co/";
     String url;
     public static String CHARGE_ENDPOINT;
     public static String CARD_VALIDATE_ENDPOINT;
@@ -26,29 +25,21 @@ public class Endpoint {
     public static String SUBACCOUNT_ENDPOINT;
     public static String CREATE_PAYMENT_PLAN_ENDPOINT;
     public static String BVN_VALIDATION_ENDPOINT;
-    
- 
+
     void init() {
 
-        if (RaveConstant.ENVIRONMENT.toString().equalsIgnoreCase("live")) {
+        url = staging_url;
 
-            url = live_url;
-
-        } else {
-            url = staging_url;
-        }
-
-       
         CHARGE_ENDPOINT = url + "flwv3-pug/getpaidx/api/charge";
         CARD_VALIDATE_ENDPOINT = url + "flwv3-pug/getpaidx/api/validatecharge";
         ACCOUNT_VALIDATE_ENDPOINT = url + "flwv3-pug/getpaidx/api/validate";
-        VERIFY_ENDPOINT = url+"flwv3-pug/getpaidx/api/v2/verify";
-        TRANSFER_ENDPOINT= url+"v2/gpx/transfers/create";
-        TRANSFER_RECEPIENT_ENDPOINT=url+"v2/gpx/transfers/beneficiaries/create";
-        LIST_BENEFICIARIES=url+"v2/gpx/transfers/beneficiaries";
-        SUBACCOUNT_ENDPOINT=url+"v2/gpx/subaccounts/create";
-        CREATE_PAYMENT_PLAN_ENDPOINT=url+"v2/gpx/paymentplans/create";
-        BVN_VALIDATION_ENDPOINT= url+"v2/kyc/bvn";
+        VERIFY_ENDPOINT = url + "flwv3-pug/getpaidx/api/v2/verify";
+        TRANSFER_ENDPOINT = url + "v2/gpx/transfers/create";
+        TRANSFER_RECEPIENT_ENDPOINT = url + "v2/gpx/transfers/beneficiaries/create";
+        LIST_BENEFICIARIES = url + "v2/gpx/transfers/beneficiaries";
+        SUBACCOUNT_ENDPOINT = url + "v2/gpx/subaccounts/create";
+        CREATE_PAYMENT_PLAN_ENDPOINT = url + "v2/gpx/paymentplans/create";
+        BVN_VALIDATION_ENDPOINT = url + "v2/kyc/bvn";
 
     }
 
@@ -75,38 +66,41 @@ public class Endpoint {
         return VERIFY_ENDPOINT;
 
     }
-  
-      public String getTransferEndPoint() {
+
+    public String getTransferEndPoint() {
         init();
         return TRANSFER_ENDPOINT;
 
     }
-      
-    public String getTransferRecepient(){
-         init();
+
+    public String getTransferRecepient() {
+        init();
         return TRANSFER_RECEPIENT_ENDPOINT;
 
-    }  
-     public String getListTransferRecepient(){
-         init();
+    }
+
+    public String getListTransferRecepient() {
+        init();
         return LIST_BENEFICIARIES;
 
-    }  
-       public String getSubaccountRecepientEndpoint(){
-         init();
+    }
+
+    public String getSubaccountRecepientEndpoint() {
+        init();
         return SUBACCOUNT_ENDPOINT;
 
-    }  
-        public String getCreatePaymentPlanEndpoint(){
-         init();
-        return  CREATE_PAYMENT_PLAN_ENDPOINT;
+    }
 
-    }  
-         public String getBvnEndpoint(){
-         init();
-        return  BVN_VALIDATION_ENDPOINT;
+    public String getCreatePaymentPlanEndpoint() {
+        init();
+        return CREATE_PAYMENT_PLAN_ENDPOINT;
 
-    }  
-      
-  
+    }
+
+    public String getBvnEndpoint() {
+        init();
+        return BVN_VALIDATION_ENDPOINT;
+
+    }
+
 }

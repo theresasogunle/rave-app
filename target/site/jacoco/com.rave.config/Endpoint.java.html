@@ -12,9 +12,8 @@ package com.rave.config;
 <span class="fc" id="L12">public class Endpoint {</span>
 
 <span class="fc" id="L14">    RaveConstant key = new RaveConstant();</span>
- 
+
 <span class="fc" id="L16">    String staging_url = &quot;https://ravesandboxapi.flutterwave.com/&quot;;</span>
-<span class="fc" id="L17">    String live_url = &quot;https://api.ravepay.co/&quot;;</span>
     String url;
     public static String CHARGE_ENDPOINT;
     public static String CARD_VALIDATE_ENDPOINT;
@@ -26,88 +25,83 @@ package com.rave.config;
     public static String SUBACCOUNT_ENDPOINT;
     public static String CREATE_PAYMENT_PLAN_ENDPOINT;
     public static String BVN_VALIDATION_ENDPOINT;
-    
- 
+
     void init() {
 
-<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (RaveConstant.ENVIRONMENT.toString().equalsIgnoreCase(&quot;live&quot;)) {</span>
+<span class="fc" id="L31">        url = staging_url;</span>
 
-<span class="nc" id="L35">            url = live_url;</span>
+<span class="fc" id="L33">        CHARGE_ENDPOINT = url + &quot;flwv3-pug/getpaidx/api/charge&quot;;</span>
+<span class="fc" id="L34">        CARD_VALIDATE_ENDPOINT = url + &quot;flwv3-pug/getpaidx/api/validatecharge&quot;;</span>
+<span class="fc" id="L35">        ACCOUNT_VALIDATE_ENDPOINT = url + &quot;flwv3-pug/getpaidx/api/validate&quot;;</span>
+<span class="fc" id="L36">        VERIFY_ENDPOINT = url + &quot;flwv3-pug/getpaidx/api/v2/verify&quot;;</span>
+<span class="fc" id="L37">        TRANSFER_ENDPOINT = url + &quot;v2/gpx/transfers/create&quot;;</span>
+<span class="fc" id="L38">        TRANSFER_RECEPIENT_ENDPOINT = url + &quot;v2/gpx/transfers/beneficiaries/create&quot;;</span>
+<span class="fc" id="L39">        LIST_BENEFICIARIES = url + &quot;v2/gpx/transfers/beneficiaries&quot;;</span>
+<span class="fc" id="L40">        SUBACCOUNT_ENDPOINT = url + &quot;v2/gpx/subaccounts/create&quot;;</span>
+<span class="fc" id="L41">        CREATE_PAYMENT_PLAN_ENDPOINT = url + &quot;v2/gpx/paymentplans/create&quot;;</span>
+<span class="fc" id="L42">        BVN_VALIDATION_ENDPOINT = url + &quot;v2/kyc/bvn&quot;;</span>
 
-        } else {
-<span class="fc" id="L38">            url = staging_url;</span>
-        }
-
-       
-<span class="fc" id="L42">        CHARGE_ENDPOINT = url + &quot;flwv3-pug/getpaidx/api/charge&quot;;</span>
-<span class="fc" id="L43">        CARD_VALIDATE_ENDPOINT = url + &quot;flwv3-pug/getpaidx/api/validatecharge&quot;;</span>
-<span class="fc" id="L44">        ACCOUNT_VALIDATE_ENDPOINT = url + &quot;flwv3-pug/getpaidx/api/validate&quot;;</span>
-<span class="fc" id="L45">        VERIFY_ENDPOINT = url+&quot;flwv3-pug/getpaidx/api/v2/verify&quot;;</span>
-<span class="fc" id="L46">        TRANSFER_ENDPOINT= url+&quot;v2/gpx/transfers/create&quot;;</span>
-<span class="fc" id="L47">        TRANSFER_RECEPIENT_ENDPOINT=url+&quot;v2/gpx/transfers/beneficiaries/create&quot;;</span>
-<span class="fc" id="L48">        LIST_BENEFICIARIES=url+&quot;v2/gpx/transfers/beneficiaries&quot;;</span>
-<span class="fc" id="L49">        SUBACCOUNT_ENDPOINT=url+&quot;v2/gpx/subaccounts/create&quot;;</span>
-<span class="fc" id="L50">        CREATE_PAYMENT_PLAN_ENDPOINT=url+&quot;v2/gpx/paymentplans/create&quot;;</span>
-<span class="fc" id="L51">        BVN_VALIDATION_ENDPOINT= url+&quot;v2/kyc/bvn&quot;;</span>
-
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L44">    }</span>
 
     public String getChargeEndPoint() {
-<span class="fc" id="L56">        init();</span>
-<span class="fc" id="L57">        return CHARGE_ENDPOINT;</span>
+<span class="fc" id="L47">        init();</span>
+<span class="fc" id="L48">        return CHARGE_ENDPOINT;</span>
 
     }
 
     public String getValidateCardChargeEndPoint() {
-<span class="fc" id="L62">        init();</span>
-<span class="fc" id="L63">        return CARD_VALIDATE_ENDPOINT;</span>
+<span class="fc" id="L53">        init();</span>
+<span class="fc" id="L54">        return CARD_VALIDATE_ENDPOINT;</span>
 
     }
 
     public String getValidateAccountChargeEndPoint() {
-<span class="nc" id="L68">        init();</span>
-<span class="nc" id="L69">        return ACCOUNT_VALIDATE_ENDPOINT;</span>
+<span class="nc" id="L59">        init();</span>
+<span class="nc" id="L60">        return ACCOUNT_VALIDATE_ENDPOINT;</span>
 
     }
 
     public String getVerifyEndPoint() {
-<span class="nc" id="L74">        init();</span>
-<span class="nc" id="L75">        return VERIFY_ENDPOINT;</span>
+<span class="fc" id="L65">        init();</span>
+<span class="fc" id="L66">        return VERIFY_ENDPOINT;</span>
 
     }
-  
-      public String getTransferEndPoint() {
-<span class="fc" id="L80">        init();</span>
-<span class="fc" id="L81">        return TRANSFER_ENDPOINT;</span>
+
+    public String getTransferEndPoint() {
+<span class="fc" id="L71">        init();</span>
+<span class="fc" id="L72">        return TRANSFER_ENDPOINT;</span>
 
     }
-      
-    public String getTransferRecepient(){
-<span class="fc" id="L86">         init();</span>
-<span class="fc" id="L87">        return TRANSFER_RECEPIENT_ENDPOINT;</span>
 
-    }  
-     public String getListTransferRecepient(){
-<span class="fc" id="L91">         init();</span>
-<span class="fc" id="L92">        return LIST_BENEFICIARIES;</span>
+    public String getTransferRecepient() {
+<span class="fc" id="L77">        init();</span>
+<span class="fc" id="L78">        return TRANSFER_RECEPIENT_ENDPOINT;</span>
 
-    }  
-       public String getSubaccountRecepientEndpoint(){
-<span class="nc" id="L96">         init();</span>
-<span class="nc" id="L97">        return SUBACCOUNT_ENDPOINT;</span>
+    }
 
-    }  
-        public String getCreatePaymentPlanEndpoint(){
-<span class="fc" id="L101">         init();</span>
-<span class="fc" id="L102">        return  CREATE_PAYMENT_PLAN_ENDPOINT;</span>
+    public String getListTransferRecepient() {
+<span class="fc" id="L83">        init();</span>
+<span class="fc" id="L84">        return LIST_BENEFICIARIES;</span>
 
-    }  
-         public String getBvnEndpoint(){
-<span class="fc" id="L106">         init();</span>
-<span class="fc" id="L107">        return  BVN_VALIDATION_ENDPOINT;</span>
+    }
 
-    }  
-      
-  
+    public String getSubaccountRecepientEndpoint() {
+<span class="nc" id="L89">        init();</span>
+<span class="nc" id="L90">        return SUBACCOUNT_ENDPOINT;</span>
+
+    }
+
+    public String getCreatePaymentPlanEndpoint() {
+<span class="fc" id="L95">        init();</span>
+<span class="fc" id="L96">        return CREATE_PAYMENT_PLAN_ENDPOINT;</span>
+
+    }
+
+    public String getBvnEndpoint() {
+<span class="fc" id="L101">        init();</span>
+<span class="fc" id="L102">        return BVN_VALIDATION_ENDPOINT;</span>
+
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
