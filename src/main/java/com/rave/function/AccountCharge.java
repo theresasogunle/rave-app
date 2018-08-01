@@ -26,7 +26,8 @@ public class AccountCharge {
 
     private String accountnumber, accountbank, currency, country,
             amount, email, phonenumber, firstname, lastname,
-            txRef, passcode, device_fingerprint, redirect_url,payment_plan;
+            txRef, passcode, device_fingerprint, redirect_url;
+            int payment_plan;
 
     private String transaction_reference;//to be called
     private String otp;//to be called
@@ -334,14 +335,14 @@ public class AccountCharge {
     /**
      * @return the payment_plan
      */
-    public String getPayment_plan() {
+    public int getPayment_plan() {
         return payment_plan;
     }
 
     /**
      * @param payment_plan the payment_plan to set
      */
-    public AccountCharge setPayment_plan(String payment_plan) {
+    public AccountCharge setPayment_plan(int payment_plan) {
         this.payment_plan = payment_plan;
         return this;
     }

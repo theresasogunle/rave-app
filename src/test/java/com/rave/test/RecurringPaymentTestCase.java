@@ -30,7 +30,9 @@ public class RecurringPaymentTestCase {
         JSONObject response = py.createPaymentPlan();
         if (response.get("status").equals("success")) {
             JSONObject data = (JSONObject) response.get("data");
-            String id = (String) data.get("id");
+            int id = (Integer) data.get("id");
+            
+            
             CardCharge ch = new CardCharge();
             ch.setCardno("4556052704172643")
                     .setCvv("899")

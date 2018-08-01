@@ -34,12 +34,12 @@ public class TransferTestCase {
         RaveConstant.PUBLIC_KEY = "FLWPUBK-d8369e6826011f8a1f9f6c7c14a09b80-X";
         RaveConstant.SECRET_KEY = "FLWSECK-8abf446c71a58aaa858323f3a9ed156b-X";
         RaveConstant.ENVIRONMENT = Environment.STAGING;
-
+        Double txR = Math.random();
         Transfer tr = new Transfer();
         tr.setAccount_bank("044");
         tr.setAccount_number("0690000035");
         tr.setAmount("5000");
-        
+        tr.setReference(txR.toString());
 
         JSONObject response = tr.createTransferRecepient();
 

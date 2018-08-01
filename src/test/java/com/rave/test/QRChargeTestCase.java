@@ -29,8 +29,8 @@ public class QRChargeTestCase {
     
        QRCharge ch = new QRCharge();
           ch.setAmount("2000");
-          ch.setCountry("NGN");
-          ch.setCurrency("NG");
+          ch.setCountry("NG");
+          ch.setCurrency("NGN");
           ch.setEmail("sogunledolapo@gmail.com");
           ch.setFirstname("Theresa");
           ch.setMetaname("flightid");

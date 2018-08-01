@@ -47,7 +47,7 @@ public class CardCharge {
     private String device_fingerprint;
     private String IP;
     private String charge_type;
-    private String payment_plan;
+    private int payment_plan;
 
     private String transactionreference, otp, authUrl;
 
@@ -565,14 +565,14 @@ public class CardCharge {
     /**
      * @return the payment_type
      */
-    public String getPayment_plan() {
+    public int getPayment_plan() {
         return payment_plan;
     }
 
     /**
      * @param payment_type the payment_type to set
      */
-    public CardCharge setPayment_plan(String payment_plan) {
+    public CardCharge setPayment_plan(int payment_plan) {
         this.payment_plan = payment_plan;
         return this;
     }
