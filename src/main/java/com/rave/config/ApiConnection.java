@@ -97,5 +97,19 @@ public class ApiConnection {
         }
         return null;
     }
+      public JSONObject connectAndQueryWithGet() {
+        try {
+            HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
+                    .header("content-type", "application/json")
+                    
+                    .asJson();
+            
+            return queryForResponse.getBody().getObject();
+           
+        } catch (UnirestException e) {
+            System.out.println("Cant query at this time!");
+        }
+        return null;
+    }
   
 }

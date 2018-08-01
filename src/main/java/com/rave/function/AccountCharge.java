@@ -26,7 +26,7 @@ public class AccountCharge {
 
     private String accountnumber, accountbank, currency, country,
             amount, email, phonenumber, firstname, lastname,
-            txRef, passcode, device_fingerprint, redirect_url;
+            txRef, passcode, device_fingerprint, redirect_url,payment_plan;
 
     private String transaction_reference;//to be called
     private String otp;//to be called
@@ -47,6 +47,7 @@ public class AccountCharge {
             json.put("payment_type", "account");
             json.put("txRef", this.getTxRef());
             json.put("redirect_url", this.getRedirect_url());
+            json.put("payment_plan", this.getPayment_plan());
 
        
         return json;
@@ -328,6 +329,21 @@ public class AccountCharge {
         this.redirect_url = redirect_url;
         return this;
 
+    }
+
+    /**
+     * @return the payment_plan
+     */
+    public String getPayment_plan() {
+        return payment_plan;
+    }
+
+    /**
+     * @param payment_plan the payment_plan to set
+     */
+    public AccountCharge setPayment_plan(String payment_plan) {
+        this.payment_plan = payment_plan;
+        return this;
     }
 
 }

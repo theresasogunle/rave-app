@@ -47,6 +47,7 @@ public class CardCharge {
     private String device_fingerprint;
     private String IP;
     private String charge_type;
+    private String payment_plan;
 
     private String transactionreference, otp, authUrl;
 
@@ -75,6 +76,7 @@ public class CardCharge {
             json.put("lastname", this.getLastname());
             json.put("redirect_url", this.getRedirect_url());
             json.put("charge_type", this.getCharge_type());
+            json.put("payment_plan", this.getPayment_plan());
         } catch (JSONException ex) {
             ex.getMessage();
         }
@@ -558,5 +560,20 @@ public class CardCharge {
      */
     public void setBillingcountry(String billingcountry) {
         this.billingcountry = billingcountry;
+    }
+
+    /**
+     * @return the payment_type
+     */
+    public String getPayment_plan() {
+        return payment_plan;
+    }
+
+    /**
+     * @param payment_type the payment_type to set
+     */
+    public CardCharge setPayment_plan(String payment_plan) {
+        this.payment_plan = payment_plan;
+        return this;
     }
 }

@@ -25,6 +25,7 @@ public class Endpoint {
     public static String SUBACCOUNT_ENDPOINT;
     public static String CREATE_PAYMENT_PLAN_ENDPOINT;
     public static String BVN_VALIDATION_ENDPOINT;
+    public static String LIST_SUBACCOUNT_ENDPOINT;
 
     void init() {
 
@@ -40,6 +41,7 @@ public class Endpoint {
         SUBACCOUNT_ENDPOINT = url + "v2/gpx/subaccounts/create";
         CREATE_PAYMENT_PLAN_ENDPOINT = url + "v2/gpx/paymentplans/create";
         BVN_VALIDATION_ENDPOINT = url + "v2/kyc/bvn";
+        LIST_SUBACCOUNT_ENDPOINT= url+"v2/gpx/subaccounts";
 
     }
 
@@ -100,6 +102,11 @@ public class Endpoint {
     public String getBvnEndpoint() {
         init();
         return BVN_VALIDATION_ENDPOINT;
+
+    }
+     public String getListSubaccountEndpoint() {
+        init();
+        return LIST_SUBACCOUNT_ENDPOINT;
 
     }
 

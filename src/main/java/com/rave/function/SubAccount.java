@@ -58,6 +58,11 @@ public class SubAccount {
         return this.apiConnection.connectAndQuery(api);
 
     }
+     public JSONObject listSubAccount() throws Exception {
+        this.apiConnection = new ApiConnection(ed.getListSubaccountEndpoint());
+        return this.apiConnection.connectAndQueryWithGet();
+
+    }
 
     /**
      * @return the account_bank
