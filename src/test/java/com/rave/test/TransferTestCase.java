@@ -90,6 +90,9 @@ public class TransferTestCase {
         Transfer tr = new Transfer();
 
         JSONObject response = tr.listTransferRecepient();
+        if(response.equals("null")){
+             assertEquals("null", "null");
+        }
 
         if (response.get("status").equals("success")) {
             assertEquals(response.get("status"), "success");

@@ -60,7 +60,9 @@ public class SubAccount {
     }
      public JSONObject listSubAccount() throws Exception {
         this.apiConnection = new ApiConnection(ed.getListSubaccountEndpoint());
-        return this.apiConnection.connectAndQueryWithGet();
+         String url= "https://ravesandboxapi.flutterwave.com/v2/gpx/subaccounts/?seckey="+RaveConstant.SECRET_KEY;
+
+        return this.apiConnection.connectAndQueryWithGet(url);
 
     }
 
