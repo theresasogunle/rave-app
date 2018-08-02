@@ -1,5 +1,5 @@
 # rave-app
-[![Coverage Status](https://coveralls.io/repos/github/theresasogunle/rave-backend/badge.svg?branch=master)](https://coveralls.io/github/theresasogunle/rave-backend?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/theresasogunle/rave-app/badge.svg?branch=master)](https://coveralls.io/github/theresasogunle/rave-app?branch=master)
 
 ## Test Implementation
 
