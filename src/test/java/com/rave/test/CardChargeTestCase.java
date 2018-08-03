@@ -29,7 +29,7 @@ public class CardChargeTestCase {
      *
      * @throws JSONException
      */
-    public void testCardCharge() throws JSONException {
+    public void testCardCharge() throws Exception {
         RaveConstant.PUBLIC_KEY = "FLWPUBK-d8369e6826011f8a1f9f6c7c14a09b80-X";
         RaveConstant.SECRET_KEY = "FLWSECK-8abf446c71a58aaa858323f3a9ed156b-X";
         RaveConstant.ENVIRONMENT = Environment.STAGING;
@@ -85,6 +85,7 @@ public class CardChargeTestCase {
 
         }
 
+        
     }
 
     /**

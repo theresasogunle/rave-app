@@ -37,7 +37,7 @@ public class SubAccount {
     private String metavalue;
     private JSONObject meta = new JSONObject();
 
-    public JSONObject initiateSubaccountPayment() {
+    public JSONObject initiateSubaccountPayment()  {
         this.apiConnection = new ApiConnection(ed.getTransferEndPoint());
         ApiQuery api = new ApiQuery();
 
@@ -58,7 +58,7 @@ public class SubAccount {
         return this.apiConnection.connectAndQuery(api);
 
     }
-     public JSONObject listSubAccount() throws Exception {
+     public JSONObject listSubAccount()  {
         this.apiConnection = new ApiConnection(ed.getListSubaccountEndpoint());
          String url= "https://ravesandboxapi.flutterwave.com/v2/gpx/subaccounts/?seckey="+RaveConstant.SECRET_KEY;
 

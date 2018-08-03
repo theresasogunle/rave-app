@@ -35,7 +35,7 @@ public class RecurringPayment {
     Endpoint ed = new Endpoint();
     Encryption e = new Encryption();
 
-    public JSONObject createPaymentPlan() {
+    public JSONObject createPaymentPlan()  {
         this.apiConnection = new ApiConnection(ed.getCreatePaymentPlanEndpoint());
         ApiQuery api = new ApiQuery();
 

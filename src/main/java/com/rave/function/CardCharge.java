@@ -59,7 +59,7 @@ public class CardCharge {
      */
     public JSONObject setJSON() {
         JSONObject json = new JSONObject();
-        try {
+       
 
             json.put("cardno", this.getCardno());
             json.put("cvv", this.getCvv());
@@ -77,9 +77,7 @@ public class CardCharge {
             json.put("redirect_url", this.getRedirect_url());
             json.put("charge_type", this.getCharge_type());
             json.put("payment_plan", this.getPayment_plan());
-        } catch (JSONException ex) {
-            ex.getMessage();
-        }
+       
         return json;
     }
 
@@ -133,7 +131,7 @@ public class CardCharge {
      @params transaction reference(flwRef),OTP 
      * @return JSONObject
      */
-    public JSONObject validateCardCharge() {
+    public JSONObject validateCardCharge() throws JSONException{
         Charge vch = new Charge();
 
         return vch.validateCardCharge(this.getTransactionreference(), this.getOtp());
@@ -475,22 +473,8 @@ public class CardCharge {
         return this;
     }
 
-    /**
-     * @return the authUrl
-     */
-    public String getAuthUrl() {
-        return authUrl;
-    }
-
-    /**
-     * @param authUrl the authUrl to set
-     * @return CardCharge
-     */
-    public CardCharge setAuthUrl(String authUrl) {
-        this.authUrl = authUrl;
-
-        return this;
-    }
+   
+   
 
     /**
      * @return the billingzip

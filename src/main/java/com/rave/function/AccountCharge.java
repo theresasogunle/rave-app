@@ -60,7 +60,7 @@ public class AccountCharge {
      * @return json
      */
 
-    public JSONObject chargeAccount() {
+    public JSONObject chargeAccount()throws JSONException {
 
         JSONObject json = setJSON();
 
@@ -75,7 +75,7 @@ public class AccountCharge {
 
     }
 
-    public JSONObject verify(String txref) {
+    public JSONObject verify(String txref){
         this.apiConnection = new ApiConnection(ed.getVerifyEndPoint());
 
         ApiQuery api = new ApiQuery();
@@ -85,7 +85,7 @@ public class AccountCharge {
         return this.apiConnection.connectAndQuery(api);
     }
 
-    public JSONObject validateAccountCharge() {
+    public JSONObject validateAccountCharge()throws JSONException {
         Charge vcharge = new Charge();
         return vcharge.validateAccountCharge(this.getTransaction_reference(), this.getOtp());
     }

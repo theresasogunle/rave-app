@@ -8,7 +8,6 @@ package com.rave.test;
 import com.rave.config.Environment;
 import com.rave.config.RaveConstant;
 import com.rave.function.SubAccount;
-import com.rave.function.Transfer;
 import org.json.JSONObject;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -35,6 +34,7 @@ public class SubAccountTestCase {
        sb.setBusiness_mobile("09087930450");
        sb.setMetaname("MarketplaceID");
        sb.setMetavalue("ggs-920900");
+       sb.setSplit_value("1");
        
        
 

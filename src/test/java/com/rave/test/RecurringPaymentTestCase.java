@@ -26,6 +26,9 @@ public class RecurringPaymentTestCase {
         py.setName("Wunmi");
         py.setInterval("monthly");
         py.setDuration("3");
+        py.setCurrency("NGN");
+        py.setMetaname("flightID");
+        py.setMetavalue("76373s");
 
         JSONObject response = py.createPaymentPlan();
         if (response.get("status").equals("success")) {
@@ -126,7 +129,9 @@ public class RecurringPaymentTestCase {
             System.out.println(response);
 
         }
+         
 
     }
+    
 
 }
